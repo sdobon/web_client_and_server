@@ -59,7 +59,7 @@ int main(int argc, char * argv[]) {
     /* Hint: use gethostbyname() */
     site = gethostbyname(server_name);
     if (site == NULL) {
-      close(sock);z
+      close(sock);
       return -1;
     }
     /* set address */
