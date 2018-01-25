@@ -25,7 +25,7 @@ int main(int argc, char * argv[]) {
     char * bptr = NULL;
     char * bptr2 = NULL;
     char * endheaders = NULL;
-   
+
     struct timeval timeout;
     fd_set set;
 
@@ -42,9 +42,9 @@ int main(int argc, char * argv[]) {
 
 
     /* initialize minet */
-    if (toupper(*(argv[1])) == 'K') { 
+    if (toupper(*(argv[1])) == 'K') {
 	minet_init(MINET_KERNEL);
-    } else if (toupper(*(argv[1])) == 'U') { 
+    } else if (toupper(*(argv[1])) == 'U') {
 	minet_init(MINET_USER);
     } else {
 	fprintf(stderr, "First argument must be k or u\n");
@@ -52,22 +52,22 @@ int main(int argc, char * argv[]) {
     }
 
     /* create socket */
-
+    sock = socket( AF_ INET, SOCK_ STREAM, 0);
     // Do DNS lookup
     /* Hint: use gethostbyname() */
 
     /* set address */
 
     /* connect socket */
-    
+
     /* send request */
 
     /* wait till socket can be read */
     /* Hint: use select(), and ignore timeout for now. */
-    
+
     /* first read loop -- read headers */
-    
-    /* examine return code */   
+
+    /* examine return code */
     //Skip "HTTP/1.0"
     //remove the '\0'
     // Normal reply has return code 200
@@ -75,7 +75,7 @@ int main(int argc, char * argv[]) {
     /* print first part of response */
 
     /* second read loop -- print out the rest of the response */
-    
+
     /*close socket and deinitialize */
 
 
@@ -93,12 +93,10 @@ int write_n_bytes(int fd, char * buf, int count) {
     while ((rc = minet_write(fd, buf + totalwritten, count - totalwritten)) > 0) {
 	totalwritten += rc;
     }
-    
+
     if (rc < 0) {
 	return -1;
     } else {
 	return totalwritten;
     }
 }
-
-
