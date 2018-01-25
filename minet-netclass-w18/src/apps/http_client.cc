@@ -57,16 +57,16 @@ int main(int argc, char * argv[]) {
       return sock;
     // Do DNS lookup
     /* Hint: use gethostbyname() */
-    host = gethostbyname(hostname);
-    if (host == NULL) {
-      close(sock);
+    site = gethostbyname(server_name);
+    if (site == NULL) {
+      close(sock);z
       return -1;
     }
     /* set address */
     memset(&sin, 0, sizeof(sin));
     sin.sin_family = AF_INET;
-    sin.sin_port = htons(port);
-    sin.sin_addr.s_addr = *(unsigned long*) host->h_addr_list[0];
+    sin.sin_port = htons(server_port);
+    sin.sin_addr.s_addr = *(unsigned long*) site->h_addr_list[0];
 
     /* connect socket */
     if (connect(sock, (struct sockaddr*) &sin, sizeof(sin)) != 0) {
