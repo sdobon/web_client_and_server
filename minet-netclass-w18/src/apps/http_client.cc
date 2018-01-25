@@ -52,7 +52,7 @@ int main(int argc, char * argv[]) {
     }
 
     /* create socket */
-    sock = socket( AF_ INET, SOCK_ STREAM, 0);
+    sock = socket(AF_INET, SOCK_STREAM, 0);
     // Do DNS lookup
     /* Hint: use gethostbyname() */
 
