@@ -75,6 +75,8 @@ int main(int argc, char * argv[]) {
       close(sockfd);
       return -1;
     }
+    printf("GET /%s HTTP/1.1\r\nHost: %s\r\nConnection: close\r\n\r\n")
+    req = (char*) malloc(strlen(sprintf("GET /%s HTTP/1.1\r\nHost: %s\r\nConnection: close\r\n\r\n")));
 
     strcat(req, "GET ");
     strcat(req, "/");
