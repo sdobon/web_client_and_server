@@ -86,7 +86,7 @@ int main(int argc, char * argv[]) {
     printf("%s\n", buf);
 
     /* send request */
-    write_n_bytes(sockfd, &buf, 1024);
+    write_n_bytes(sockfd, buf, 1024);
     /* wait till socket can be read */
     FD_SET(sockfd, &set)
     /* Hint: use select(), and ignore timeout for now. */
