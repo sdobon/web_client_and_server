@@ -76,17 +76,17 @@ int main(int argc, char * argv[]) {
       return -1;
     }
 
-    strcat(buf, "GET ");
-    strcat(buf, "/");
-    strcat(buf, server_path);
-    strcat(buf, " HTTP/1.1\r\nHost: ");
-    strcat(buf, server_name);
-    strcat(buf, "\r\nConnection: close\r\n\r\n");
+    strcat(req, "GET ");
+    strcat(req, "/");
+    strcat(req, server_path);
+    strcat(req, " HTTP/1.1\r\nHost: ");
+    strcat(req, server_name);
+    strcat(req, "\r\nConnection: close\r\n\r\n");
 
-    printf("%s\n", buf);
+    printf("%s\n",req);
 
     /* send request */
-    write_n_bytes(sockfd, buf, 1024);
+    write_n_bytes(sockfd, req, 1024);
     /* wait till socket can be read */
     FD_SET(sockfd, &set);
     /* Hint: use select(), and ignore timeout for now. */
@@ -94,8 +94,10 @@ int main(int argc, char * argv[]) {
     status = minet_select(sockfd+1, &set, NULL, NULL, NULL);
 
     /* first read loop -- read headers */
-    if (FD_ISSET(sockfd, &set)) {  
+    if (FD_ISSET(sockfd, &set)) {
       printf("%s\n", "success");
+      buf = minet_read(sockfd, buf, 1024)
+      printf("%s\n", buf);
     };
 
     /* examine return code */
