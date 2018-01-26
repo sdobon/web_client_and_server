@@ -15,8 +15,8 @@ int readnbytes(int,char *,int);
 int main(int argc,char *argv[])
 {
   int server_port;
-  int sock,sock2;
-  struct sockaddr_in sa,sa2;
+  int sockfd,sockfd2;
+  struct sockaddr_in sa_listen,sa_client;
   int rc;
 
   /* parse command line args */
@@ -33,7 +33,20 @@ int main(int argc,char *argv[])
   }
 
   /* initialize and make socket */
+  sockfd_listen = minet_socket(SOCK_STREAM);
+  if (sockfd_listen < 0)
+	 return -1;
+  minet_bind(sockfd_listen, &sa_lisen);
 
+  memset(&sa_listen, 0, sizeof(sa_listen));
+  sin.sin_family = AF_INET;
+  sin.sin_addr.s_addr = htonl(INADDR_ANY);
+  sin.sin_port = htons(server_port);
+
+  if (minet_bind(sockfd, &sa_listen) != 0) {
+    minet_close(sockfd);
+    return -1;
+  }
   /* set server address*/
 
   /* bind listening socket */
@@ -123,4 +136,3 @@ int writenbytes(int fd,char *str,int size)
   else
     return totalwritten;
 }
-
