@@ -52,14 +52,15 @@ int main(int argc, char * argv[]) {
     }
 
     /* create socket */
-    sock = socket(AF_INET, SOCK_STREAM, 0);
-    if (sock == -1)
-      return sock;
+    sockfd = minet_socket(SOCK_STREAM);
+    if (sockfd == -1)
+      return sockfd;
+    minet_bind(sockfd, sin)
     // Do DNS lookup
     /* Hint: use gethostbyname() */
     site = gethostbyname(server_name);
     if (site == NULL) {
-      close(sock);
+      minet_close(sockfd);
       return -1;
     }
     /* set address */
@@ -69,8 +70,8 @@ int main(int argc, char * argv[]) {
     sin.sin_addr.s_addr = *(unsigned long*) site->h_addr_list[0];
 
     /* connect socket */
-    if (connect(sock, (struct sockaddr*) &sin, sizeof(sin)) != 0) {
-      close(sock);
+    if (minet_connect(sockfd, (struct sockaddr*) &sin) != 0) {
+      close(sockfd);
       return -1;
     }
     printf("%s\n", "someString");
