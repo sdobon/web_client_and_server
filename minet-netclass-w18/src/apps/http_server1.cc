@@ -32,6 +32,8 @@ int main(int argc,char *argv[])
     exit(-1);
   }
 
+  printf("%s\n", "check1");
+
   /* initialize and make socket */
   sockfd_listen = minet_socket(SOCK_STREAM);
   if (sockfd_listen < 0)
