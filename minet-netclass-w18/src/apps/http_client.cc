@@ -25,6 +25,7 @@ int main(int argc, char * argv[]) {
     char * bptr = NULL;
     char * bptr2 = NULL;
     char * endheaders = NULL;
+    int status;
 
     struct timeval timeout;
     fd_set set;
@@ -83,11 +84,16 @@ int main(int argc, char * argv[]) {
     strcat(buf, "\r\nConnection: close\r\n\r\n");
 
     printf("%s\n", buf);
+
     /* send request */
-
+    write_n_bytes(sockfd, &buf, 1024);
     /* wait till socket can be read */
+    FD_SET(sockfd, &set)
     /* Hint: use select(), and ignore timeout for now. */
-
+    while(true){
+      status = minet_select(sockfd+1, &set, NULL, NULL, NULL)
+      printf("%i\n", status);
+    }
     /* first read loop -- read headers */
 
     /* examine return code */
