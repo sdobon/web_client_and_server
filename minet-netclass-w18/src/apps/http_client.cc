@@ -76,16 +76,18 @@ int main(int argc, char * argv[]) {
       return -1;
     }
     printf("GET /%s HTTP/1.1\r\nHost: %s\r\nConnection: close\r\n\r\n", server_path, server_name);
-    req = (char*) malloc (sprintf("GET /%s HTTP/1.1\r\nHost: %s\r\nConnection: close\r\n\r\n", server_path, server_name)); 
+    req = (char *) malloc((int) strlen("GET / HTTP/1.1\r\n\r\n") + (int) server_path));
+    //
+    // strcat(req, "GET ");
+    // strcat(req, "/");
+    // strcat(req, server_path);
+    // strcat(req, " HTTP/1.1\r\nHost: ");
+    // strcat(req, server_name);
+    // strcat(req, "\r\nConnection: close\r\n\r\n");
+    //
+    // printf("%s\n", req);
 
-    strcat(req, "GET ");
-    strcat(req, "/");
-    strcat(req, server_path);
-    strcat(req, " HTTP/1.1\r\nHost: ");
-    strcat(req, server_name);
-    strcat(req, "\r\nConnection: close\r\n\r\n");
-
-    printf("%s\n", req);
+    sprintf(req, "GET /%s HTTP/1.1\r\nHost: %s\r\nConnection: close\r\n\r\n", server_path, server_name);
 
     /* send request */
     write_n_bytes(sockfd, req, 1024);
