@@ -91,7 +91,7 @@ int main(int argc, char * argv[]) {
     FD_SET(sockfd, &set);
     /* Hint: use select(), and ignore timeout for now. */
     while(true){
-      status = minet_select(sockfd+1, &set, NULL, NULL, NULL)
+      status = minet_select(sockfd+1, &set, NULL, NULL, NULL);
       printf("%i\n", status);
     };
     /* first read loop -- read headers */
