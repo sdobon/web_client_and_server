@@ -72,20 +72,10 @@ int main(int argc, char * argv[]) {
 
     /* connect socket */
     if (minet_connect(sockfd, &sin) != 0) {
-      close(sockfd);
+      minet_close(sockfd);
       return -1;
     }
-    // printf("GET /%s HTTP/1.0\r\nHost: %s\r\nConnection: close\r\n\r\n", server_path, server_name);
     req = (char *) malloc((int) strlen("GET / HTTP/1.0\r\n\r\n") + (int) strlen(server_path));
-    //
-    // strcat(req, "GET ");
-    // strcat(req, "/");
-    // strcat(req, server_path);
-    // strcat(req, " HTTP/1.1\r\nHost: ");
-    // strcat(req, server_name);
-    // strcat(req, "\r\nConnection: close\r\n\r\n");
-    //
-    // printf("%s\n", req);
 
     sprintf(req, "GET /%s HTTP/1.0\r\n\r\n", server_path);
 
@@ -95,11 +85,10 @@ int main(int argc, char * argv[]) {
     FD_SET(sockfd, &set);
     /* Hint: use select(), and ignore timeout for now. */
 
-    minet_select(sockfd+1, &set, NULL, NULL, NULL);
+    minet_select(sockfd+1, &set, NULL, NULL, NULL)
 
     /* first read loop -- read headers */
     if (FD_ISSET(sockfd, &set)) {
-      printf("%s\n", "success");
       minet_read(sockfd, buf, 1024);
       printf("%s\n", buf);
     };
@@ -114,7 +103,7 @@ int main(int argc, char * argv[]) {
     /* second read loop -- print out the rest of the response */
 
     /*close socket and deinitialize */
-
+    minet_close(sockfd);
 
     if (ok) {
 	return 0;
