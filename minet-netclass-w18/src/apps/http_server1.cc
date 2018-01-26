@@ -48,7 +48,7 @@ int main(int argc,char *argv[])
     return -1;
   }
   /* set server address*/
-  printf("%s\n", "success")
+  printf("%s\n", "successs");
   /* bind listening socket */
 
   /* start listening */
