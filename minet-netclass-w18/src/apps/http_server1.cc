@@ -15,7 +15,7 @@ int readnbytes(int,char *,int);
 int main(int argc,char *argv[])
 {
   int server_port;
-  int sockfd,sockfd2;
+  int sockfd_listen,sockfd_client;
   struct sockaddr_in sa_listen,sa_client;
   int rc;
 
