@@ -85,7 +85,7 @@ int main(int argc, char * argv[]) {
     FD_SET(sockfd, &set);
     /* Hint: use select(), and ignore timeout for now. */
 
-    minet_select(sockfd+1, &set, NULL, NULL, NULL)
+    minet_select(sockfd+1, &set, NULL, NULL, NULL);
 
     /* first read loop -- read headers */
     if (FD_ISSET(sockfd, &set)) {
