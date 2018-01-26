@@ -25,7 +25,7 @@ int main(int argc, char * argv[]) {
     char * bptr = NULL;
     char * bptr2 = NULL;
     char * endheaders = NULL;
-    int status;
+    int written;
 
     struct timeval timeout;
     fd_set set;
@@ -86,7 +86,8 @@ int main(int argc, char * argv[]) {
     printf("%s\n", req);
 
     /* send request */
-    printf("%i\n", write_n_bytes(sockfd, req, 1024));
+    written = write_n_bytes(sockfd, req, 1024)
+    printf("%i\n", written);
     /* wait till socket can be read */
     FD_SET(sockfd, &set);
     /* Hint: use select(), and ignore timeout for now. */
