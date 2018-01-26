@@ -75,7 +75,7 @@ int main(int argc, char * argv[]) {
       return -1;
     }
 
-    //buf += "GET"
+    strcat(buf, "GET")
 
     printf("%s\n", buf);
     /* send request */
