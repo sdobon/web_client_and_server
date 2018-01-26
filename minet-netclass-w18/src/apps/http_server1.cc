@@ -43,8 +43,8 @@ int main(int argc,char *argv[])
   sin.sin_addr.s_addr = htonl(INADDR_ANY);
   sin.sin_port = htons(server_port);
 
-  if (minet_bind(sockfd, &sa_listen) != 0) {
-    minet_close(sockfd);
+  if (minet_bind(sockfd_listen, &sa_listen) != 0) {
+    minet_close(sockfd_listen);
     return -1;
   }
   /* set server address*/
@@ -57,7 +57,7 @@ int main(int argc,char *argv[])
   while(1)
   {
     /* handle connections */
-    rc = handle_connection(sock2);
+    rc = handle_connection(sockfd_client);
   }
 }
 
