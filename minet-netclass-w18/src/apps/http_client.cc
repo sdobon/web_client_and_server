@@ -55,7 +55,7 @@ int main(int argc, char * argv[]) {
     sockfd = minet_socket(SOCK_STREAM);
     if (sockfd == -1)
       return sockfd;
-    minet_bind(sockfd, sin);
+    minet_bind(sockfd, &sin);
     // Do DNS lookup
     /* Hint: use gethostbyname() */
     site = gethostbyname(server_name);
