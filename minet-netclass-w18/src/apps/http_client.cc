@@ -96,7 +96,7 @@ int main(int argc, char * argv[]) {
     /* first read loop -- read headers */
     if (FD_ISSET(sockfd, &set)) {
       printf("%s\n", "success");
-      minet_read(sockfd, buf, 1024);
+      //minet_read(sockfd, buf, 1024);
       printf("%s\n", buf);
     };
 
