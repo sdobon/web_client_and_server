@@ -87,7 +87,6 @@ int main(int argc, char * argv[]) {
 
     /* send request */
     write_n_bytes(sockfd, req, 1024);
-    printf("%i\n", written);
     /* wait till socket can be read */
     FD_SET(sockfd, &set);
     /* Hint: use select(), and ignore timeout for now. */
