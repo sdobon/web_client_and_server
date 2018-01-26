@@ -75,7 +75,12 @@ int main(int argc, char * argv[]) {
       return -1;
     }
 
-    strcat(buf, "GET");
+    strcat(buf, "GET ");
+    strcat(buf, "/");
+    strcat(buf, server_path);
+    strcat(buf, " HTTP/1.1\r\nHost: ");
+    strcat(buf, server_name);
+    strcat(buf, "\r\nConnection: close\r\n\r\n");
 
     printf("%s\n", buf);
     /* send request */
