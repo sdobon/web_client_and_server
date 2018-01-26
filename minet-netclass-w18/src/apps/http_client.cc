@@ -75,8 +75,8 @@ int main(int argc, char * argv[]) {
       close(sockfd);
       return -1;
     }
-    printf("GET /%s HTTP/1.1\r\nHost: %s\r\nConnection: close\r\n\r\n", server_path, server_name);
-    req = (char *) malloc((int) strlen("GET / HTTP/1.1\r\n\r\n") + (int) strlen(server_path));
+    // printf("GET /%s HTTP/1.0\r\nHost: %s\r\nConnection: close\r\n\r\n", server_path, server_name);
+    req = (char *) malloc((int) strlen("GET / HTTP/1.0\r\n\r\n") + (int) strlen(server_path));
     //
     // strcat(req, "GET ");
     // strcat(req, "/");
@@ -87,7 +87,7 @@ int main(int argc, char * argv[]) {
     //
     // printf("%s\n", req);
 
-    sprintf(req, "GET /%s HTTP/1.1\r\nHost: %s\r\nConnection: close\r\n\r\n", server_path, server_name);
+    sprintf(req, "GET /%s HTTP/1.0\r\n\r\n", server_path);
 
     /* send request */
     write_n_bytes(sockfd, req, 1024);
@@ -100,8 +100,8 @@ int main(int argc, char * argv[]) {
     /* first read loop -- read headers */
     if (FD_ISSET(sockfd, &set)) {
       printf("%s\n", "success");
-      //minet_read(sockfd, buf, 1024);
-      //printf("%s\n", buf);
+      minet_read(sockfd, buf, 1024);
+      printf("%s\n", buf);
     };
 
     /* examine return code */
