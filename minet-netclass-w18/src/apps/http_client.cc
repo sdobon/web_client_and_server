@@ -86,7 +86,7 @@ int main(int argc, char * argv[]) {
     printf("%s\n", req);
 
     /* send request */
-    written = write_n_bytes(sockfd, req, 1024)
+    written = write_n_bytes(sockfd, req, 1024);
     printf("%i\n", written);
     /* wait till socket can be read */
     FD_SET(sockfd, &set);
