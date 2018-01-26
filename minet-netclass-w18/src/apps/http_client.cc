@@ -25,7 +25,7 @@ int main(int argc, char * argv[]) {
     char * bptr = NULL;
     char * bptr2 = NULL;
     char * endheaders = NULL;
-    string request = "";
+    char * request = "";
 
     struct timeval timeout;
     fd_set set;
