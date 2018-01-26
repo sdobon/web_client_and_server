@@ -88,7 +88,7 @@ int main(int argc, char * argv[]) {
     /* send request */
     write_n_bytes(sockfd, buf, 1024);
     /* wait till socket can be read */
-    FD_SET(sockfd, &set);
+    ///FD_SET(sockfd, &set);
     /* Hint: use select(), and ignore timeout for now. */
     while(true){
       status = minet_select(sockfd+1, &set, NULL, NULL, NULL);
