@@ -90,12 +90,13 @@ int main(int argc, char * argv[]) {
     /* wait till socket can be read */
     FD_SET(sockfd, &set);
     /* Hint: use select(), and ignore timeout for now. */
-    while(true){
-      status = minet_select(sockfd+1, &set, NULL, NULL, NULL);
-      printf("%i\n", status);
-      printf("%i\n", 200);
-    };
+
+    status = minet_select(sockfd+1, &set, NULL, NULL, NULL);
+
     /* first read loop -- read headers */
+    if (FD_ISSET(fromfd1, &readset)) {  
+      printf("%s\n", "success");
+    };
 
     /* examine return code */
     //Skip "HTTP/1.0"
