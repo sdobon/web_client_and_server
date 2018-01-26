@@ -32,6 +32,16 @@ int main(int argc,char *argv[])
     exit(-1);
   }
 
+  /* initialize minet */
+  if (toupper(*(argv[1])) == 'K') {
+minet_init(MINET_KERNEL);
+  } else if (toupper(*(argv[1])) == 'U') {
+minet_init(MINET_USER);
+  } else {
+fprintf(stderr, "First argument must be k or u\n");
+exit(-1);
+  }
+
   printf("%s\n", "check1");
 
   /* initialize and make socket */
