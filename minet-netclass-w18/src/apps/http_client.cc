@@ -83,10 +83,10 @@ int main(int argc, char * argv[]) {
     strcat(req, server_name);
     strcat(req, "\r\nConnection: close\r\n\r\n");
 
-    printf("%s\n",req);
+    printf("%s\n", req);
 
     /* send request */
-    write_n_bytes(sockfd, req, 1024);
+    printf("%i\n", write_n_bytes(sockfd, req, 1024);
     /* wait till socket can be read */
     FD_SET(sockfd, &set);
     /* Hint: use select(), and ignore timeout for now. */
@@ -96,7 +96,7 @@ int main(int argc, char * argv[]) {
     /* first read loop -- read headers */
     if (FD_ISSET(sockfd, &set)) {
       printf("%s\n", "success");
-      buf = minet_read(sockfd, buf, 1024)
+      minet_read(sockfd, buf, 1024);
       printf("%s\n", buf);
     };
 
