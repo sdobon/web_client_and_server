@@ -12,7 +12,7 @@ int main(int argc, char * argv[]) {
     int server_port = 0;
     char * server_path = NULL;
 
-    int sock = 0;
+    int sockfd = 0;
     int rc = -1;
     int datalen = 0;
     bool ok = true;
@@ -55,7 +55,7 @@ int main(int argc, char * argv[]) {
     sockfd = minet_socket(SOCK_STREAM);
     if (sockfd == -1)
       return sockfd;
-    minet_bind(sockfd, sin)
+    minet_bind(sockfd, sin);
     // Do DNS lookup
     /* Hint: use gethostbyname() */
     site = gethostbyname(server_name);
