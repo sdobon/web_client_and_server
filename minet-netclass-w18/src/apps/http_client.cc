@@ -80,7 +80,7 @@ int main(int argc, char * argv[]) {
     sprintf(req, "GET /%s HTTP/1.0\r\n\r\n", server_path);
 
     /* send request */
-    write_n_bytes(sockfd, req, 1024);
+    write_n_bytes(sockfd, req, (int) strlen(req));
     /* wait till socket can be read */
     FD_SET(sockfd, &set);
     /* Hint: use select(), and ignore timeout for now. */
