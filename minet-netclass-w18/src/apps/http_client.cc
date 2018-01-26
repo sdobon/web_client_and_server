@@ -94,7 +94,7 @@ int main(int argc, char * argv[]) {
     status = minet_select(sockfd+1, &set, NULL, NULL, NULL);
 
     /* first read loop -- read headers */
-    if (FD_ISSET(fromfd1, &readset)) {  
+    if (FD_ISSET(sockfd, &set)) {  
       printf("%s\n", "success");
     };
 
