@@ -93,6 +93,7 @@ int main(int argc, char * argv[]) {
     while(true){
       status = minet_select(sockfd+1, &set, NULL, NULL, NULL);
       printf("%i\n", status);
+      printf("%i\n", 200);
     };
     /* first read loop -- read headers */
 
