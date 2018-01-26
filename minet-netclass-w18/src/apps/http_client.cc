@@ -97,7 +97,7 @@ int main(int argc, char * argv[]) {
     if (FD_ISSET(sockfd, &set)) {
       printf("%s\n", "success");
       //minet_read(sockfd, buf, 1024);
-      printf("%s\n", buf);
+      //printf("%s\n", buf);
     };
 
     /* examine return code */
