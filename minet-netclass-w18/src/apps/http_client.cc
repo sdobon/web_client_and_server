@@ -25,7 +25,6 @@ int main(int argc, char * argv[]) {
     char * bptr = NULL;
     char * bptr2 = NULL;
     char * endheaders = NULL;
-    int written;
 
     struct timeval timeout;
     fd_set set;
