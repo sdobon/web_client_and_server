@@ -25,6 +25,7 @@ int main(int argc, char * argv[]) {
     char * bptr = NULL;
     char * bptr2 = NULL;
     char * endheaders = NULL;
+    string request = "";
 
     struct timeval timeout;
     fd_set set;
@@ -74,7 +75,10 @@ int main(int argc, char * argv[]) {
       close(sockfd);
       return -1;
     }
-    printf("%s\n", "someString");
+
+    request += "GET"
+
+    printf("%s\n", request);
     /* send request */
 
     /* wait till socket can be read */
