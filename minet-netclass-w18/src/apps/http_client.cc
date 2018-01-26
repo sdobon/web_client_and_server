@@ -76,7 +76,7 @@ int main(int argc, char * argv[]) {
       return -1;
     }
     printf("GET /%s HTTP/1.1\r\nHost: %s\r\nConnection: close\r\n\r\n", server_path, server_name);
-    req = (char *) malloc((int) strlen("GET / HTTP/1.1\r\n\r\n") + (int) server_path));
+    req = (char *) malloc((int) strlen("GET / HTTP/1.1\r\n\r\n") + (int) strlen(server_path));
     //
     // strcat(req, "GET ");
     // strcat(req, "/");
