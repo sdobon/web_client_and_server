@@ -36,12 +36,12 @@ int main(int argc,char *argv[])
   sockfd_listen = minet_socket(SOCK_STREAM);
   if (sockfd_listen < 0)
 	 return -1;
-  minet_bind(sockfd_listen, &sa_lisen);
+  minet_bind(sockfd_listen, &sa_listen);
 
   memset(&sa_listen, 0, sizeof(sa_listen));
-  sin.sin_family = AF_INET;
-  sin.sin_addr.s_addr = htonl(INADDR_ANY);
-  sin.sin_port = htons(server_port);
+  sa_listen.sin_family = AF_INET;
+  sa_listen.sin_addr.s_addr = htonl(INADDR_ANY);
+  sa_listen.sin_port = htons(server_port);
 
   if (minet_bind(sockfd_listen, &sa_listen) != 0) {
     minet_close(sockfd_listen);
