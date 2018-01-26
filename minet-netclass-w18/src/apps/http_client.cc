@@ -70,7 +70,7 @@ int main(int argc, char * argv[]) {
     sin.sin_addr.s_addr = *(unsigned long*) site->h_addr_list[0];
 
     /* connect socket */
-    if (minet_connect(sockfd, (struct sockaddr*) &sin) != 0) {
+    if (minet_connect(sockfd, &sin) != 0) {
       close(sockfd);
       return -1;
     }
