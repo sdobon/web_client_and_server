@@ -54,10 +54,11 @@ exit(-1);
 
   memset(&sa_listen, 0, sizeof(sa_listen));
   sa_listen.sin_family = AF_INET;
-  sa_listen.sin_addr.s_addr = htonl(INADDR_ANY);
+  sa_listen.sin_addr.s_addr = htonl(gethostbyname());
   sa_listen.sin_port = htons(server_port);
 
   printf("%i\n", sa_listen.sin_addr.s_addr);
+  printf("%s\n", gethostbyname());
 
   if (minet_bind(sockfd_listen, &sa_listen) != 0) {
     minet_close(sockfd_listen);
