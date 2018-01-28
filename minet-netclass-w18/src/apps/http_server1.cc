@@ -57,8 +57,8 @@ exit(-1);
   sa_listen.sin_addr.s_addr = htonl(gethostbyname(NULL));
   sa_listen.sin_port = htons(server_port);
 
-  printf("%i\n", sa_listen.sin_addr.s_addr);
-  printf("%s\n%s\n", (*gethostbyname(NULL)).h_name, (*gethostbyname(NULL)).h_addr_list[0]);
+  // printf("%i\n", sa_listen.sin_addr.s_addr);
+  // printf("%s\n%s\n", (*gethostbyname(NULL)).h_name, (*gethostbyname(NULL)).h_addr_list[0]);
 
   if (minet_bind(sockfd_listen, &sa_listen) != 0) {
     minet_close(sockfd_listen);
