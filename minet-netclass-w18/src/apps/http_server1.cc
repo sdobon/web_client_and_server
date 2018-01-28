@@ -48,22 +48,21 @@ exit(-1);
   sockfd_listen = minet_socket(SOCK_STREAM);
   if (sockfd_listen < 0)
 	 return -1;
-  minet_bind(sockfd_listen, &sa_listen);
-
-  printf("%i\n", sockfd_listen);
 
   memset(&sa_listen, 0, sizeof(sa_listen));
   sa_listen.sin_family = AF_INET;
-  sa_listen.sin_addr.s_addr = htonl(gethostbyname(NULL));
+  sa_listen.sin_addr.s_addr = htonl(INADDR_ANY);
   sa_listen.sin_port = htons(server_port);
+
+  minet_bind(sockfd_listen, &sa_listen);
 
   // printf("%i\n", sa_listen.sin_addr.s_addr);
   // printf("%s\n%s\n", (*gethostbyname(NULL)).h_name, (*gethostbyname(NULL)).h_addr_list[0]);
 
-  if (minet_bind(sockfd_listen, &sa_listen) != 0) {
-    minet_close(sockfd_listen);
-    return -1;
-  }
+  // if (minet_bind(sockfd_listen, &sa_listen) != 0) {
+  //   minet_close(sockfd_listen);
+  //   return -1;
+  // }
   /* set server address*/
   printf("%s\n", "successs");
   /* bind listening socket */
