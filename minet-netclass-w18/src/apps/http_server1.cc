@@ -73,6 +73,9 @@ exit(-1);
     /* handle connections */
     sockfd_connect = minet_accept(sockfd_listen, &sa_connect);
     rc = handle_connection(sockfd_connect);
+    if (rc == -1){
+      printf("%s\n", "connection failed")
+    }
   }
 }
 
@@ -127,6 +130,8 @@ int handle_connection(int sockfd_connect)
   }
 
   /* close socket and free space */
+  minet_close(sockfd_connect);
+  free(headers);
 
   if (ok)
     return 0;

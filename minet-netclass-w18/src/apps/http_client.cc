@@ -106,6 +106,7 @@ int main(int argc, char * argv[]) {
 
     /*close socket and deinitialize */
     minet_close(sockfd);
+    free(req);
 
     if (ok) {
 	return 0;
