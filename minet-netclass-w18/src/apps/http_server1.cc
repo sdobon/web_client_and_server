@@ -115,7 +115,7 @@ int handle_connection(int sockfd_connect)
   headers = (char *) malloc(1024);
   headers = strtok(buf, "/");
   headers = strtok(NULL, " ");
-  filename = sprintf("%s", buf);
+  filename = sprintf("%s", *buf);
   printf("%s\n", filename);
     /* try opening the file */
   if (fd = open(filename) == -1){
