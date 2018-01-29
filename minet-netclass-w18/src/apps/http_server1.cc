@@ -122,7 +122,7 @@ int handle_connection(int sockfd_connect)
   //   printf("%s\n", "two");
   // };
 
-  rc = minet_read(sockfd_connect,buf,BUFSIZE));
+  rc = minet_read(sockfd_connect,buf,BUFSIZE);
   buf[rc] = '\0';
   printf("%s\n", buf);
   printf("%i\n", rc);
