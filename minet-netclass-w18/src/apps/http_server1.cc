@@ -110,6 +110,7 @@ int handle_connection(int sockfd_connect)
   //readnbytes(sockfd_connect, buf, FILENAMESIZE + 8);
   while ((rc = minet_read(sockfd_connect,buf,BUFSIZE)) > 0){
     buf[rc] = '\0';
+    printf("%s\n", buf);
     printf("%i\n", rc);
   }
 
