@@ -105,7 +105,8 @@ int handle_connection(int sockfd_connect)
 
   /* parse request to get file name */
   /* Assumption: this is a GET request and filename contains no spaces*/
-  filename = buf.substr(4, buf.find(" HTTP"));
+  filename = strtok(buf, " ");
+  filename = strtok(NULL, " ");
   sprintf("%s\n", filename);
     /* try opening the file */
 
