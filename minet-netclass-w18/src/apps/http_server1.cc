@@ -110,11 +110,10 @@ int handle_connection(int sockfd_connect)
   //readnbytes(sockfd_connect, buf, FILENAMESIZE + 8);
   while ((rc = minet_read(sockfd_connect,buf,BUFSIZE)) > 0){
     buf[rc] = '\0';
-    printf("%s\n", "looping");
     printf("%i\n", rc);
   }
 
-  printf("%s\n", "read in");
+  printf("%s\n", buf);
   /* parse request to get file name */
   /* Assumption: this is a GET request and filename contains no spaces*/
   // headers = (char *) malloc(BUFSIZE);
@@ -122,9 +121,9 @@ int handle_connection(int sockfd_connect)
   // headers = strtok(NULL, " ");
   // printf("%s\n", headers);
   //   /* try opening the file */
-  // if ((fd = open("./http_server1.cc", O_RDONLY)) == -1){
-  //   ok = false;
-  // };
+  if ((fd = open("/src/apps/http_client.cc", O_RDONLY)) == -1){
+    ok = false;
+  };
   /* send response */
   if (ok)
   {
