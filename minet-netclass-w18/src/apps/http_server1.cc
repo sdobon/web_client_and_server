@@ -116,14 +116,14 @@ int handle_connection(int sockfd_connect)
   printf("%s\n", "read in");
   /* parse request to get file name */
   /* Assumption: this is a GET request and filename contains no spaces*/
-  headers = (char *) malloc(BUFSIZE);
-  headers = strtok(buf, " ");
-  headers = strtok(NULL, " ");
-  printf("%s\n", headers);
-    /* try opening the file */
-  if ((fd = open("./http_server1.cc", O_RDONLY)) == -1){
-    ok = false;
-  };
+  // headers = (char *) malloc(BUFSIZE);
+  // headers = strtok(buf, " ");
+  // headers = strtok(NULL, " ");
+  // printf("%s\n", headers);
+  //   /* try opening the file */
+  // if ((fd = open("./http_server1.cc", O_RDONLY)) == -1){
+  //   ok = false;
+  // };
   /* send response */
   if (ok)
   {
