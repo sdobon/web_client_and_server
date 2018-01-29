@@ -148,7 +148,7 @@ int handle_connection(int sockfd_connect)
   else // send error response
   {
     printf("%s\n", "didnt find file");
-    write_n_bytes(sockfd_connect, notok_response, (int) strlen(notok_response));
+    writenbytes(sockfd_connect, notok_response, (int) strlen(notok_response));
   }
 
   /* close socket and free space */
