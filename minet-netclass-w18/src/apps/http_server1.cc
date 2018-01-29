@@ -115,21 +115,20 @@ int handle_connection(int sockfd_connect)
   headers = (char *) malloc(1024);
   headers = strtok(buf, "/");
   headers = strtok(NULL, " ");
-  filename = strcopy(filename, headers);
-  printf("%s\n", filename);
     /* try opening the file */
-  if ((fd = open(filename, O_RDONLY)) == -1){
+  if ((fd = open(headers, O_RDONLY)) == -1){
     ok = false;
   };
   /* send response */
   if (ok)
   {
     /* send headers */
-
+    printf("%s\n", "found file");
     /* send file */
   }
   else // send error response
   {
+    printf("%s\n", "didnt find file");
   }
 
   /* close socket and free space */
