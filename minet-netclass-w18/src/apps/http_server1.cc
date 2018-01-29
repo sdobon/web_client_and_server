@@ -107,11 +107,10 @@ int handle_connection(int sockfd_connect)
   // while (readin = readnbytes(sockfd_connect, buf, 15) > 0){
   //
   // };
-  readnbytes(sockfd_connect, buf, FILENAMESIZE + 8);
-  // while ((rc = minet_read(sockfd_connect,buf+totalread,size-totalread)) > 0){
-  //   totalread += rc;
-  //   printf("%i\n", totalread);
-  // }
+  //readnbytes(sockfd_connect, buf, FILENAMESIZE + 8);
+  while ((rc = minet_read(sockfd_connect,buf,BUFSIZE)) > 0){
+    printf("%i\n", rc);
+  }
 
   printf("%s\n", "read in");
   /* parse request to get file name */
