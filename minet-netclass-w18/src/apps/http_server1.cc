@@ -115,7 +115,7 @@ int handle_connection(int sockfd_connect)
   headers = (char *) malloc(1024);
   headers = strtok(buf, "/");
   headers = strtok(NULL, " ");
-  strncopy(filename, headers, 100);
+  filename = strncopy(filename, headers, 100);
   printf("%s\n", filename);
     /* try opening the file */
   if ((fd = open(filename, O_RDONLY)) == -1){
