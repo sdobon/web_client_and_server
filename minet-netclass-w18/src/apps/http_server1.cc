@@ -129,14 +129,19 @@ int handle_connection(int sockfd_connect)
 
   /* parse request to get file name */
   /* Assumption: this is a GET request and filename contains no spaces*/
-  headers = (char *) malloc(BUFSIZE);
-  headers = strtok(buf, " ");
-  headers = strtok(NULL, " ");
-  printf("%s\n", headers);
-  //   /* try opening the file */
-  if ((fd = open("./src/apps/http_client.cc", O_RDONLY)) == -1){
+  if (strlen(buf) > 0) {
+    headers = (char *) malloc(BUFSIZE);
+    headers = strtok(buf, " ");
+    headers = strtok(NULL, " ");
+    printf("%s\n", headers);
+  }
+  else {
     ok = false;
   }
+    //   /* try opening the file */
+    if ((fd = open(strcat("./src/apps", headers), O_RDONLY)) == -1){
+      ok = false;
+    }
   /* send response */
   if (ok)
   {
@@ -146,7 +151,7 @@ int handle_connection(int sockfd_connect)
   }
   else // send error response
   {
-    printf("%s\n", "didnt find file");
+    printf("%s\n", "404");
     writenbytes(sockfd_connect, notok_response, (int) strlen(notok_response));
   }
 
