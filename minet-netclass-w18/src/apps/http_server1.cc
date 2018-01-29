@@ -15,8 +15,8 @@ int readnbytes(int,char *,int);
 int main(int argc,char *argv[])
 {
   int server_port;
-  int sockfd_listen,sockfd_client;
-  struct sockaddr_in sa_listen,sa_client;
+  int sockfd_listen,sockfd_connect;
+  struct sockaddr_in sa_listen,sa_connect;
   int rc;
 
   /* parse command line args */
@@ -42,43 +42,41 @@ fprintf(stderr, "First argument must be k or u\n");
 exit(-1);
   }
 
-  printf("%s\n", "check1");
-
   /* initialize and make socket */
   sockfd_listen = minet_socket(SOCK_STREAM);
   if (sockfd_listen < 0)
 	 return -1;
 
+  /* set server address*/
   memset(&sa_listen, 0, sizeof(sa_listen));
   sa_listen.sin_family = AF_INET;
   sa_listen.sin_addr.s_addr = htonl(INADDR_ANY);
   sa_listen.sin_port = htons(server_port);
 
-  minet_bind(sockfd_listen, &sa_listen);
-
-  // printf("%i\n", sa_listen.sin_addr.s_addr);
-  // printf("%s\n%s\n", (*gethostbyname(NULL)).h_name, (*gethostbyname(NULL)).h_addr_list[0]);
-
-  // if (minet_bind(sockfd_listen, &sa_listen) != 0) {
-  //   minet_close(sockfd_listen);
-  //   return -1;
-  // }
-  /* set server address*/
-  printf("%s\n", "successs");
   /* bind listening socket */
+  if (minet_bind(sockfd_listen, &sa_listen) != 0){
+    minet_close(sockfd_listen);
+    return -1;
+  };
 
   /* start listening */
+  if (minet_listen(sockfd_listen, 50) != 0){
+    minet_close(sockfd_listen);
+    return -1;
+  };
 
   /* connection handling loop */
   while(1)
   {
     /* handle connections */
-    rc = handle_connection(sockfd_client);
+    sockfd_connect = minet_accept(sockfd_listen, &sa_connect)
+    rc = handle_connection(sockfd_connect);
   }
 }
 
-int handle_connection(int sock2)
+int handle_connection(int sockfd_connect)
 {
+  printf("%s\n", "connection!");
   char filename[FILENAMESIZE+1];
   int rc;
   int fd;
