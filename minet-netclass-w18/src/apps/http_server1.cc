@@ -105,7 +105,7 @@ int handle_connection(int sockfd_connect)
 
   /* parse request to get file name */
   /* Assumption: this is a GET request and filename contains no spaces*/
-  //headers =(char *) malloc((int)
+  headers =(char *) malloc((int) strlen(buf));
   headers = strtok(buf, " ");
   headers = strtok(NULL, " ");
   printf("%s\n", headers);
