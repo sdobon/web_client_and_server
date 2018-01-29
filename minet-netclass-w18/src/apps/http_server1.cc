@@ -99,15 +99,14 @@ int handle_connection(int sockfd_connect)
                          "</body></html>\n";
   bool ok=true;
 
+  /* first read loop -- get request and headers*/
   readnbytes(sockfd_connect, buf, 1024);
 
-  printf("%s\n", buf);
-
-  /* first read loop -- get request and headers*/
 
   /* parse request to get file name */
   /* Assumption: this is a GET request and filename contains no spaces*/
-
+  filename = buf.substr(4, buf.find(" HTTP"));
+  sprintf("%s\n", filename);
     /* try opening the file */
 
   /* send response */
