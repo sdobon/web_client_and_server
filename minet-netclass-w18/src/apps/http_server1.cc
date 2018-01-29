@@ -102,6 +102,7 @@ int handle_connection(int sockfd_connect)
                          "<h2>404 FILE NOT FOUND</h2>\n"
                          "</body></html>\n";
   bool ok=true;
+  printf("%s\n", "finish init");
   fd_set set;
 
   /* first read loop -- get request and headers*/
