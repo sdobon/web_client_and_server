@@ -113,11 +113,14 @@ int handle_connection(int sockfd_connect)
   /* parse request to get file name */
   /* Assumption: this is a GET request and filename contains no spaces*/
   headers = (char *) malloc(1024);
-  headers = strtok(buf, " ");
+  headers = strtok(buf, "/");
   headers = strtok(NULL, " ");
-  printf("%s\n", headers);
+  filename = sprintf("%s", headers);
+  printf("%s\n", filename);
     /* try opening the file */
-
+  if (fd = open(filename) == -1){
+    ok = false;
+  };
   /* send response */
   if (ok)
   {
@@ -131,7 +134,7 @@ int handle_connection(int sockfd_connect)
 
   /* close socket and free space */
   minet_close(sockfd_connect);
-  // free(headers);
+  free(headers);
 
   if (ok)
     return 0;
