@@ -82,6 +82,7 @@ int handle_connection(int sockfd_connect)
   char filename[FILENAMESIZE+1];
   int rc;
   int fd;
+  int readin;
   struct stat filestat;
   char buf[BUFSIZE+1];
   char *headers;
@@ -100,7 +101,10 @@ int handle_connection(int sockfd_connect)
   bool ok=true;
 
   /* first read loop -- get request and headers*/
-  readnbytes(sockfd_connect, buf, 15);
+  // while (readin = readnbytes(sockfd_connect, buf, 15) > 0){
+  //
+  // };
+  readnbytes(sockfd_connect, buf, 1024)
 
   printf("%s\n", "read in");
   /* parse request to get file name */
