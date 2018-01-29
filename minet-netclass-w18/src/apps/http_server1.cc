@@ -108,8 +108,7 @@ int handle_connection(int sockfd_connect)
   memset(&buf, 0, sizeof(buf));
 
   /* first read loop -- get request and headers*/
-  FD_SET(sockfd_connect, &set);
-  minet_select(sockfd_connect+1, &set, NULL, NULL, NULL);
+
   // while (readin = readnbytes(sockfd_connect, buf, 15) > 0){
   //
   // };
@@ -123,7 +122,7 @@ int handle_connection(int sockfd_connect)
   //   printf("%s\n", "two");
   // };
 
-  rc = minet_read(sockfd_connect,buf,BUFSIZE))
+  rc = minet_read(sockfd_connect,buf,BUFSIZE));
   buf[rc] = '\0';
   printf("%s\n", buf);
   printf("%i\n", rc);
