@@ -99,7 +99,7 @@ int handle_connection(int sockfd_connect)
                          "</body></html>\n";
   bool ok=true;
 
-  readnbytes(sockfd_connect, &buf, 1024);
+  readnbytes(sockfd_connect, buf, 1024);
 
   printf("%s\n", buf);
 
