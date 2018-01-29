@@ -65,6 +65,8 @@ exit(-1);
     return -1;
   };
 
+  printf("%s\n", "now accepting connections...");
+
   /* connection handling loop */
   while(1)
   {
@@ -96,6 +98,10 @@ int handle_connection(int sockfd_connect)
                          "<h2>404 FILE NOT FOUND</h2>\n"
                          "</body></html>\n";
   bool ok=true;
+
+  readnbytes(sockfd_connect, &buf, 1024);
+
+  printf("%s\n", buf);
 
   /* first read loop -- get request and headers*/
 
