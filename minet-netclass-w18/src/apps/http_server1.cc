@@ -123,19 +123,17 @@ int handle_connection(int sockfd_connect)
   //   printf("%s\n", "two");
   // };
 
-  while ((rc = minet_read(sockfd_connect,buf,BUFSIZE)) > 0){
-    buf[rc] = '\0';
-    printf("%s\n", buf);
-    printf("%i\n", rc);
-  }
-
+  rc = minet_read(sockfd_connect,buf,BUFSIZE))
+  buf[rc] = '\0';
   printf("%s\n", buf);
+  printf("%i\n", rc);
+
   /* parse request to get file name */
   /* Assumption: this is a GET request and filename contains no spaces*/
-  // headers = (char *) malloc(BUFSIZE);
-  // headers = strtok(buf, " ");
-  // headers = strtok(NULL, " ");
-  // printf("%s\n", headers);
+  headers = (char *) malloc(BUFSIZE);
+  headers = strtok(buf, " ");
+  headers = strtok(NULL, " ");
+  printf("%s\n", headers);
   //   /* try opening the file */
   if ((fd = open("/src/apps/http_client.cc", O_RDONLY)) == -1){
     ok = false;
