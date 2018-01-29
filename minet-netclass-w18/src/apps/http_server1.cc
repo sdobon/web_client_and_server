@@ -104,7 +104,7 @@ int handle_connection(int sockfd_connect)
   // while (readin = readnbytes(sockfd_connect, buf, 15) > 0){
   //
   // };
-  readnbytes(sockfd_connect, buf, 1024)
+  readnbytes(sockfd_connect, buf, 1024);
 
   printf("%s\n", "read in");
   /* parse request to get file name */
