@@ -131,7 +131,7 @@ int handle_connection(int sockfd_connect)
 
   /* close socket and free space */
   minet_close(sockfd_connect);
-  free(headers);
+  // free(headers);
 
   if (ok)
     return 0;
