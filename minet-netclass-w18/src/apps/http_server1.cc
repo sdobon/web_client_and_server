@@ -108,16 +108,20 @@ int handle_connection(int sockfd_connect)
   //
   // };
   readnbytes(sockfd_connect, buf, FILENAMESIZE + 8);
+  // while ((rc = minet_read(sockfd_connect,buf+totalread,size-totalread)) > 0){
+  //   totalread += rc;
+  //   printf("%i\n", totalread);
+  // }
 
   printf("%s\n", "read in");
   /* parse request to get file name */
   /* Assumption: this is a GET request and filename contains no spaces*/
-  headers = (char *) malloc(1024);
+  headers = (char *) malloc(BUFSIZE);
   headers = strtok(buf, " ");
   headers = strtok(NULL, " ");
   printf("%s\n", headers);
     /* try opening the file */
-  if ((fd = open(headers, O_RDONLY)) == -1){
+  if ((fd = open("./http_server1.cc", O_RDONLY)) == -1){
     ok = false;
   };
   /* send response */
@@ -144,6 +148,7 @@ int handle_connection(int sockfd_connect)
 
 int readnbytes(int fd,char *buf,int size)
 {
+  printf("%s\n", "reading...");
   int rc = 0;
   int totalread = 0;
   while ((rc = minet_read(fd,buf+totalread,size-totalread)) > 0){
