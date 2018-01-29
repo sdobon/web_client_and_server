@@ -107,15 +107,15 @@ int handle_connection(int sockfd_connect)
   // while (readin = readnbytes(sockfd_connect, buf, 15) > 0){
   //
   // };
-  readnbytes(sockfd_connect, buf, 1024);
+  readnbytes(sockfd_connect, buf, FILENAMESIZE + 8);
 
   printf("%s\n", "read in");
   /* parse request to get file name */
   /* Assumption: this is a GET request and filename contains no spaces*/
-  headers = (char *) malloc(1024);
-  headers = strtok(buf, "/");
-  headers = strtok(NULL, " ");
-  filename = sprintf("%s", *buf);
+  //headers = (char *) malloc(1024);
+  filename = strtok(buf, "/");
+  filename = strtok(NULL, " ");
+  //filename = sprintf("%s", *buf);
   printf("%s\n", filename);
     /* try opening the file */
   if (fd = open(filename) == -1){
