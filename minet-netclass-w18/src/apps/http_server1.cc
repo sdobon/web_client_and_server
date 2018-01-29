@@ -115,6 +115,7 @@ int handle_connection(int sockfd_connect)
   if (FD_ISSET(sockfd_connect, &set)) {
     printf("%s\n", "one");
   };
+  printf("%s\n", "check");
   minet_read(sockfd_connect,buf,BUFSIZE);
   if (FD_ISSET(sockfd_connect, &set)) {
     printf("%s\n", "two");
