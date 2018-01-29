@@ -102,10 +102,10 @@ int handle_connection(int sockfd_connect)
   /* first read loop -- get request and headers*/
   readnbytes(sockfd_connect, buf, 1024);
 
-
+  printf("%s\n", "read in");
   /* parse request to get file name */
   /* Assumption: this is a GET request and filename contains no spaces*/
-  headers =(char *) malloc((int) strlen(buf));
+  headers = (char *) malloc((int) strlen(buf));
   headers = strtok(buf, " ");
   headers = strtok(NULL, " ");
   printf("%s\n", headers);
