@@ -134,8 +134,11 @@ int readnbytes(int fd,char *buf,int size)
 {
   int rc = 0;
   int totalread = 0;
-  while ((rc = minet_read(fd,buf+totalread,size-totalread)) > 0)
+  while ((rc = minet_read(fd,buf+totalread,size-totalread)) > 0){
     totalread += rc;
+    printf("%i\n", totalread);
+  }
+
 
   if (rc < 0)
   {
