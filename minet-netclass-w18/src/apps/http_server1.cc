@@ -118,7 +118,7 @@ int handle_connection(int sockfd_connect)
   strcopy(filename, headers);
   printf("%s\n", filename);
     /* try opening the file */
-  if (fd = open(filename) == -1){
+  if (fd = open(filename, O_RDONLY) == -1){
     ok = false;
   };
   /* send response */
