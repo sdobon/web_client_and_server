@@ -74,8 +74,8 @@ exit(-1);
     sockfd_connect = minet_accept(sockfd_listen, &sa_connect);
     rc = handle_connection(sockfd_connect);
     if (rc == -1){
-      printf("%s\n", "connection failed")
-    }
+      printf("%s\n", "connection failed");
+    };
   }
 }
 
