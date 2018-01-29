@@ -106,18 +106,18 @@ int handle_connection(int sockfd_connect)
 
   /* first read loop -- get request and headers*/
   FD_SET(sockfd_connect, &set);
-  minet_select(sockfd+1, &set, NULL, NULL, NULL);
+  minet_select(sockfd_connect+1, &set, NULL, NULL, NULL);
   // while (readin = readnbytes(sockfd_connect, buf, 15) > 0){
   //
   // };
   //readnbytes(sockfd_connect, buf, FILENAMESIZE + 8);
   if (FD_ISSET(sockfd_connect, &set)) {
     printf("%s\n", "one");
-  }
-  minet_read(sockfd_connect,buf,BUFSIZE))
+  };
+  minet_read(sockfd_connect,buf,BUFSIZE));
   if (FD_ISSET(sockfd_connect, &set)) {
     printf("%s\n", "two");
-  }
+  };
 
   // while ((rc = minet_read(sockfd_connect,buf,BUFSIZE)) > 0){
   //   buf[rc] = '\0';
