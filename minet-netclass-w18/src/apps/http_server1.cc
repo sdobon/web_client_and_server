@@ -100,7 +100,7 @@ int handle_connection(int sockfd_connect)
   bool ok=true;
 
   /* first read loop -- get request and headers*/
-  readnbytes(sockfd_connect, buf, 1024);
+  readnbytes(sockfd_connect, buf, 15);
 
   printf("%s\n", "read in");
   /* parse request to get file name */
