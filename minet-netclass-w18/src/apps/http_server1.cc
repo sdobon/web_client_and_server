@@ -134,9 +134,9 @@ int handle_connection(int sockfd_connect)
   headers = strtok(NULL, " ");
   printf("%s\n", headers);
   //   /* try opening the file */
-  if ((fd = open("/src/apps/http_client.cc", O_RDONLY)) == -1){
+  if ((fd = open("./src/apps/http_client.cc", O_RDONLY)) == -1){
     ok = false;
-  };
+  }
   /* send response */
   if (ok)
   {
