@@ -69,7 +69,7 @@ exit(-1);
   while(1)
   {
     /* handle connections */
-    sockfd_connect = minet_accept(sockfd_listen, &sa_connect)
+    sockfd_connect = minet_accept(sockfd_listen, &sa_connect);
     rc = handle_connection(sockfd_connect);
   }
 }
