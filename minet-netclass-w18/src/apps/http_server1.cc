@@ -105,6 +105,8 @@ int handle_connection(int sockfd_connect)
   printf("%s\n", "finish init");
   fd_set set;
 
+  memset(&buf, 0, sizeof(buf));
+
   /* first read loop -- get request and headers*/
   FD_SET(sockfd_connect, &set);
   minet_select(sockfd_connect+1, &set, NULL, NULL, NULL);
@@ -112,20 +114,20 @@ int handle_connection(int sockfd_connect)
   //
   // };
   //readnbytes(sockfd_connect, buf, FILENAMESIZE + 8);
-  if (FD_ISSET(sockfd_connect, &set)) {
-    printf("%s\n", "one");
-  };
-  printf("%s\n", "check");
-  minet_read(sockfd_connect,buf,BUFSIZE);
-  if (FD_ISSET(sockfd_connect, &set)) {
-    printf("%s\n", "two");
-  };
+  // if (FD_ISSET(sockfd_connect, &set)) {
+  //   printf("%s\n", "one");
+  // };
+  // printf("%s\n", "check");
+  // minet_read(sockfd_connect,buf,BUFSIZE);
+  // if (FD_ISSET(sockfd_connect, &set)) {
+  //   printf("%s\n", "two");
+  // };
 
-  // while ((rc = minet_read(sockfd_connect,buf,BUFSIZE)) > 0){
-  //   buf[rc] = '\0';
-  //   printf("%s\n", buf);
-  //   printf("%i\n", rc);
-  // }
+  while ((rc = minet_read(sockfd_connect,buf,BUFSIZE)) > 0){
+    buf[rc] = '\0';
+    printf("%s\n", buf);
+    printf("%i\n", rc);
+  }
 
   printf("%s\n", buf);
   /* parse request to get file name */
