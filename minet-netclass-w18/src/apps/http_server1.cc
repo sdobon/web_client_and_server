@@ -60,7 +60,7 @@ exit(-1);
   };
 
   /* start listening */
-  if (minet_listen(sockfd_listen, 50) != 0){
+  if (minet_listen(sockfd_listen, 1000) != 0){
     minet_close(sockfd_listen);
     return -1;
   };
