@@ -80,7 +80,7 @@ int main(int argc, char * argv[]) {
     req = (char *) malloc((int) strlen("GET / HTTP/1.0\r\n\r\n") + (int) strlen(server_path));
 
     sprintf(req, "GET /%s HTTP/1.0\r\n\r\n", server_path);
-
+    printf("%s\n", req);
     /* send request */
     write_n_bytes(sockfd, req, (int) strlen(req));
     /* wait till socket can be read */
