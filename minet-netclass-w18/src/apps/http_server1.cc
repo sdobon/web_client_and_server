@@ -103,6 +103,8 @@ int handle_connection(int sockfd_connect)
                          "<h2>404 FILE NOT FOUND</h2>\n"
                          "</body></html>\n";
   bool ok=false;
+  char baseurl[120] = "./src/apps";
+
   printf("%s\n", "finish init");
 
   memset(&buf, 0, sizeof(buf));
@@ -138,7 +140,7 @@ int handle_connection(int sockfd_connect)
     //printf("%i\n", strlen(headers));
     //printf("%s\n", headers);
     //   /* try opening the file */
-    printf("%s\n", strcat("./src/apps", headers))
+    printf("%s\n", strcat(baseurl, headers));
     // if ((fd = open(strcat("./src/apps", headers), O_RDONLY)) == -1){
     //   ok = false;
     // }
