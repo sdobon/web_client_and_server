@@ -141,6 +141,7 @@ int handle_connection(int sockfd_connect)
     //   ok = false;
     // }
     free(headers);
+    printf("%s\n", "end parse");
   }
   else {
     ok = false;
