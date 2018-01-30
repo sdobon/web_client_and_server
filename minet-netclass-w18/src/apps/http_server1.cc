@@ -145,7 +145,7 @@ int handle_connection(int sockfd_connect)
       ok = false;
     }
     free(bptr);
-    stat(strcat(baseurl, headers), &sfilestat);
+    stat(strcat(baseurl, headers), &filestat);
     memset(&buf, 0, sizeof(buf));
     read(fd, buf, BUFSIZE);
     printf("%u\n", filestat.st_size);
