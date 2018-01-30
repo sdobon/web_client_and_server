@@ -96,7 +96,7 @@ int handle_connection(int sockfd_connect)
                       "Content-type: text/plain\r\n"\
                       "Content-length: %d \r\n\r\n";
   char ok_response[100];
-  
+
   char *notok_response = "HTTP/1.0 404 FILE NOT FOUND\r\n"\
                          "Content-type: text/html\r\n\r\n"\
                          "<html><body bgColor=black text=white>\n"\
@@ -121,6 +121,7 @@ int handle_connection(int sockfd_connect)
   // if (FD_ISSET(sockfd_connect, &set)) {
   //   printf("%s\n", "two");
   // };
+  minet_set_nonblocking(sockfd_connect);
 
   rc = minet_read(sockfd_connect,buf,BUFSIZE);
   buf[rc] = '\0';
