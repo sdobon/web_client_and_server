@@ -111,7 +111,7 @@ int handle_connection(int sockfd_connect)
 
   /* first read loop -- get request and headers*/
 
-  minet_set_nonblocking(sockfd_connect);
+  //minet_set_nonblocking(sockfd_connect);
 
   rc = minet_read(sockfd_connect,buf,BUFSIZE);
   buf[rc] = '\0';
