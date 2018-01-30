@@ -71,7 +71,6 @@ exit(-1);
   while(1)
   {
     /* handle connections */
-    printf("%s\n", "looking");
     sockfd_connect = minet_accept(sockfd_listen, &sa_connect);
     rc = handle_connection(sockfd_connect);
     if (rc == -1){
@@ -152,6 +151,7 @@ int handle_connection(int sockfd_connect)
     /* send headers */
     printf("%s\n", "found file");
     /* send file */
+    close(fd);
   }
   else // send error response
   {
