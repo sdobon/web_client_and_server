@@ -102,7 +102,7 @@ int handle_connection(int sockfd_connect)
                          "<html><body bgColor=black text=white>\n"\
                          "<h2>404 FILE NOT FOUND</h2>\n"
                          "</body></html>\n";
-  bool ok=true;
+  bool ok=false;
   printf("%s\n", "finish init");
 
   memset(&buf, 0, sizeof(buf));
