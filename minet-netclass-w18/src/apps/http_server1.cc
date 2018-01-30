@@ -96,6 +96,7 @@ int handle_connection(int sockfd_connect)
                       "Content-type: text/plain\r\n"\
                       "Content-length: %d \r\n\r\n";
   char ok_response[100];
+  
   char *notok_response = "HTTP/1.0 404 FILE NOT FOUND\r\n"\
                          "Content-type: text/html\r\n\r\n"\
                          "<html><body bgColor=black text=white>\n"\
@@ -103,7 +104,6 @@ int handle_connection(int sockfd_connect)
                          "</body></html>\n";
   bool ok=true;
   printf("%s\n", "finish init");
-  fd_set set;
 
   memset(&buf, 0, sizeof(buf));
 
@@ -134,14 +134,15 @@ int handle_connection(int sockfd_connect)
     headers = strtok(buf, " ");
     headers = strtok(NULL, " ");
     printf("%s\n", headers);
-  }
-  else {
-    ok = false;
-  }
     //   /* try opening the file */
     if ((fd = open(strcat("./src/apps", headers), O_RDONLY)) == -1){
       ok = false;
     }
+  }
+  else {
+    ok = false;
+  }
+
   /* send response */
   if (ok)
   {
@@ -157,7 +158,7 @@ int handle_connection(int sockfd_connect)
 
   /* close socket and free space */
   minet_close(sockfd_connect);
-  //free(headers);
+  free(headers);
 
   if (ok)
     return 0;
