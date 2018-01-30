@@ -145,7 +145,9 @@ int handle_connection(int sockfd_connect)
       ok = false;
     }
     free(bptr);
-    printf("%s\n", "end parse");
+    memset(&buf, 0, sizeof(buf));
+    read(fd, buf, BUFSIZE )
+    printf("%s\n", buf);
   }
   else {
     ok = false;
