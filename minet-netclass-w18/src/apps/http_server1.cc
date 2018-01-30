@@ -81,6 +81,7 @@ exit(-1);
 
 int handle_connection(int sockfd_connect)
 {
+  printf("%s\n", "connection!");
   char filename[FILENAMESIZE+1];
   int rc;
   int fd;
@@ -103,6 +104,8 @@ int handle_connection(int sockfd_connect)
                          "</body></html>\n";
   bool ok=true;
   char baseurl[120] = "./src/apps";
+
+  printf("%s\n", "finish init");
 
   memset(&buf, 0, sizeof(buf));
 
