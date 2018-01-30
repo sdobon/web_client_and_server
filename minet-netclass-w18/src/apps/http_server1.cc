@@ -140,7 +140,7 @@ int handle_connection(int sockfd_connect)
     // if ((fd = open(strcat("./src/apps", headers), O_RDONLY)) == -1){
     //   ok = false;
     // }
-    free(headers);
+    //free(headers);
     printf("%s\n", "end parse");
   }
   else {
