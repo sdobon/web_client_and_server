@@ -81,7 +81,6 @@ exit(-1);
 
 int handle_connection(int sockfd_connect)
 {
-  printf("%s\n", "connection!");
   char filename[FILENAMESIZE+1];
   int rc;
   int fd;
@@ -105,8 +104,6 @@ int handle_connection(int sockfd_connect)
                          "</body></html>\n";
   bool ok=true;
   char baseurl[120] = "./src/apps";
-
-  printf("%s\n", "finish init");
 
   memset(&buf, 0, sizeof(buf));
 
@@ -145,13 +142,13 @@ int handle_connection(int sockfd_connect)
     fstat(fd, &filestat);
     sprintf(ok_response, ok_response_f, filestat.st_size);
     writenbytes(sockfd_connect, ok_response, (int) strlen(ok_response));
-    printf("%s\n", "found file");
 
     /* send file */
     fileresp = (char *) malloc(filestat.st_size + 1);
     read(fd, fileresp, filestat.st_size);
-    printf("%s\n", fileresp);
+    // printf("%s\n", fileresp);
     writenbytes(sockfd_connect, fileresp, filestat.st_size);
+    free(fileresp);
     close(fd);
   }
   else // send error response
