@@ -135,12 +135,12 @@ int handle_connection(int sockfd_connect)
     bptr = headers;
     headers = strtok(buf, " ");
     headers = strtok(NULL, " ");
-    //printf("%i\n", strlen(headers));
-    //printf("%s\n", headers);
-    //   /* try opening the file */
-    // if ((fd = open(strcat("./src/apps", headers), O_RDONLY)) == -1){
-    //   ok = false;
-    // }
+    printf("%i\n", strlen(headers));
+    printf("%s\n", headers);
+      /* try opening the file */
+    if ((fd = open(strcat("./src/apps", headers), O_RDONLY)) == -1){
+      ok = false;
+    }
     free(bptr);
     printf("%s\n", "end parse");
   }
