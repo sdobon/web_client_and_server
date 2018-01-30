@@ -91,6 +91,7 @@ int handle_connection(int sockfd_connect)
   char *headers;
   char *endheaders;
   char *bptr;
+  char * fileresp;
   int datalen=0;
   char *ok_response_f = "HTTP/1.0 200 OK\r\n"\
                       "Content-type: text/plain\r\n"\
@@ -111,18 +112,6 @@ int handle_connection(int sockfd_connect)
 
   /* first read loop -- get request and headers*/
 
-  // while (readin = readnbytes(sockfd_connect, buf, 15) > 0){
-  //
-  // };
-  //readnbytes(sockfd_connect, buf, FILENAMESIZE + 8);
-  // if (FD_ISSET(sockfd_connect, &set)) {
-  //   printf("%s\n", "one");
-  // };
-  // printf("%s\n", "check");
-  // minet_read(sockfd_connect,buf,BUFSIZE);
-  // if (FD_ISSET(sockfd_connect, &set)) {
-  //   printf("%s\n", "two");
-  // };
   minet_set_nonblocking(sockfd_connect);
 
   rc = minet_read(sockfd_connect,buf,BUFSIZE);
@@ -137,18 +126,13 @@ int handle_connection(int sockfd_connect)
     bptr = headers;
     headers = strtok(buf, " ");
     headers = strtok(NULL, " ");
-    //printf("%i\n", strlen(headers));
-    //printf("%s\n", headers);
-    //   /* try opening the file */
 
+    //   /* try opening the file */
     if ((fd = open(strcat(baseurl, headers), O_RDONLY)) == -1){
       ok = false;
     }
     free(bptr);
-    fstat(fd, &filestat);
-    memset(&buf, 0, sizeof(buf));
-    read(fd, buf, BUFSIZE);
-    printf("%i\n", filestat.st_size);
+
   }
   else {
     ok = false;
@@ -158,10 +142,15 @@ int handle_connection(int sockfd_connect)
   if (ok)
   {
     /* send headers */
+    fstat(fd, &filestat);
     sprintf(ok_response, ok_response_f, filestat.st_size);
     writenbytes(sockfd_connect, ok_response, (int) strlen(ok_response));
     printf("%s\n", "found file");
+
     /* send file */
+    fileresp = (char *) malloc(filestat.st_size);
+    read(fd, filename, filestat.st_size);
+    writenbytes(sockfd_connect, fileresp, filestat.st_size);
     close(fd);
   }
   else // send error response
