@@ -136,9 +136,9 @@ int handle_connection(int sockfd_connect)
     headers = strtok(NULL, " ");
     printf("%s\n", headers);
     //   /* try opening the file */
-    if ((fd = open(strcat("./src/apps", headers), O_RDONLY)) == -1){
-      ok = false;
-    }
+    // if ((fd = open(strcat("./src/apps", headers), O_RDONLY)) == -1){
+    //   ok = false;
+    // }
     free(headers);
   }
   else {
