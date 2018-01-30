@@ -146,7 +146,7 @@ int handle_connection(int sockfd_connect)
     }
     free(bptr);
     memset(&buf, 0, sizeof(buf));
-    read(fd, buf, BUFSIZE )
+    read(fd, buf, BUFSIZE);
     printf("%s\n", buf);
   }
   else {
