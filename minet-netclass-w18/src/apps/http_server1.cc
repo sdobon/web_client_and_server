@@ -132,6 +132,7 @@ int handle_connection(int sockfd_connect)
   /* Assumption: this is a GET request and filename contains no spaces*/
   if (rc > 0) {
     headers = (char *) malloc(BUFSIZE);
+    bptr = headers;
     headers = strtok(buf, " ");
     headers = strtok(NULL, " ");
     //printf("%i\n", strlen(headers));
@@ -140,7 +141,7 @@ int handle_connection(int sockfd_connect)
     // if ((fd = open(strcat("./src/apps", headers), O_RDONLY)) == -1){
     //   ok = false;
     // }
-    //free(headers);
+    free(bptr);
     printf("%s\n", "end parse");
   }
   else {
