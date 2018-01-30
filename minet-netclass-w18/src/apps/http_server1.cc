@@ -134,6 +134,7 @@ int handle_connection(int sockfd_connect)
     headers = (char *) malloc(BUFSIZE);
     headers = strtok(buf, " ");
     headers = strtok(NULL, " ");
+    printf("%i\n", strlen(headers));
     printf("%s\n", headers);
     //   /* try opening the file */
     // if ((fd = open(strcat("./src/apps", headers), O_RDONLY)) == -1){
