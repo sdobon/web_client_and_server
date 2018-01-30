@@ -84,7 +84,6 @@ int handle_connection(int sockfd_connect)
   char filename[FILENAMESIZE+1];
   int rc;
   int fd;
-  int readin;
   struct stat filestat;
   char buf[BUFSIZE+1];
   char *headers;
