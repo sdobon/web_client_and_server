@@ -139,6 +139,7 @@ int handle_connection(int sockfd_connect)
     if ((fd = open(strcat("./src/apps", headers), O_RDONLY)) == -1){
       ok = false;
     }
+    free(headers);
   }
   else {
     ok = false;
@@ -159,7 +160,7 @@ int handle_connection(int sockfd_connect)
 
   /* close socket and free space */
   minet_close(sockfd_connect);
-  free(headers);
+
 
   if (ok)
     return 0;
