@@ -149,8 +149,8 @@ int handle_connection(int sockfd_connect)
 
     /* send file */
     fileresp = (char *) malloc(filestat.st_size + 1);
-    read(fd, filename, filestat.st_size);
-    printf("%s\n", filename);
+    read(fd, fileresp, filestat.st_size);
+    printf("%s\n", fileresp);
     writenbytes(sockfd_connect, fileresp, filestat.st_size);
     close(fd);
   }
