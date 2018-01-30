@@ -158,6 +158,8 @@ int handle_connection(int sockfd_connect)
   if (ok)
   {
     /* send headers */
+    sprintf(ok_response, ok_response_f, filestat.st_size);
+    writenbytes(sockfd_connect, ok_response, (int) strlen(ok_response));
     printf("%s\n", "found file");
     /* send file */
     close(fd);
