@@ -106,7 +106,7 @@ if (FD_ISSET(sockfd, &set)) {
 	ec = strtok(buf, " ");
 	ec = strtok(NULL, " ");
 	printf("%s\n", ec);
-	clen = strtok(NULL, "Content-Length:");
+	clen = strtok(NULL, "h");
 	clen = strtok(NULL, "\n");
 	printf ("%s\n", clen);
 	if (ec == "200") {
