@@ -27,7 +27,7 @@ int main(int argc, char * argv[]) {
     char * endheaders = NULL;
     char * ec = NULL;
     char * clen = NULL;
-    char * headers = NULL;
+    char headers[BUFSIZE + 1];
     char * mes = NULL; 
     int meslen = 0;
     int ecint = 0;
@@ -115,11 +115,9 @@ if (FD_ISSET(sockfd, &set)) {
 	printf ("%s\n", clen);
 	printf ("%d\n", clenint);
 	if (ecint == 200) {
-		printf ("this works");
-		/*headers = strtok(buf, "\0");
-		
+		headers = strtok(buf, "\0");
 		mes = headers[strlen(headers) - clenint];
-		printf ("%s\n", mes);*/
+		printf ("%s\n", mes);
 	} else {
 		printf("%s\n", buf);
 	}
