@@ -90,13 +90,31 @@ int main(int argc, char * argv[]) {
     minet_select(sockfd+1, &set, NULL, NULL, NULL);
 
     /* first read loop -- read headers */
-    if (FD_ISSET(sockfd, &set)) {
-      minet_read(sockfd, buf, 1024);
-	headers = strstr(buf, "Content-Length:");
-	printf("%s\n", headers);
-      printf("%s\n", buf);
-    };
-
+    if (FD_ISSET (sockfd, &set)) {
+	    minet_read(sockfd, buf, 1024);
+	    clen = strstr(buf, "Content-Length:");
+	    headers = strtok(clen, "\n");
+	    
+	    
+	    
+	/* if (FD_ISSET(sockfd, &set)) {
+      		minet_read(sockfd, buf, 1024);
+      		printf("%s\n", buf);
+   	 };*/
+if (FD_ISSET(sockfd, &set)) {
+	minet_read(sockfd, buf, 1024);
+	ec = strtok(buf, " ");
+	ec = strtok(NULL, " ");
+	if (ec == 200) {
+		clen = strstr(buf, "Content-Length:");
+		headers = strtok(clen, "\n");
+		headers = stoi(headers);
+		mes = buf.substr(buf.size - headers);
+		print ("%s\n", mes);
+	} else {
+		printf("%s\n", buf);
+	}
+};
     /* examine return code */
     //Skip "HTTP/1.0"
     //remove the '\0'
