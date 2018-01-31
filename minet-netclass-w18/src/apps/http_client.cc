@@ -92,6 +92,8 @@ int main(int argc, char * argv[]) {
     /* first read loop -- read headers */
     if (FD_ISSET(sockfd, &set)) {
       minet_read(sockfd, buf, 1024);
+	headers = strstr(buf, "Content-Length:");
+	printf("%s\n", headers);
       printf("%s\n", buf);
     };
 
