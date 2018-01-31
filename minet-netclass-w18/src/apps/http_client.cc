@@ -30,6 +30,7 @@ int main(int argc, char * argv[]) {
     char * headers = NULL;
     char * mes = NULL; 
     int meslen = 0;
+    int ecint = 0;
 	
     struct timeval timeout;
     fd_set set;
@@ -104,6 +105,7 @@ if (FD_ISSET(sockfd, &set)) {
 	minet_read(sockfd, buf, 1024);
 	ec = strtok(buf, " ");
 	ec = strtok(NULL, " ");
+	ecint = atoi(ec);
 	printf("%s\n", ec);
 	if (ec == 200) {
 		clen = strstr(buf, "Content-Length:");
