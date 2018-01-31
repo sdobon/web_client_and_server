@@ -56,7 +56,9 @@ int main(int argc, char * argv[]) {
     if (sockfd == -1)
       return sockfd;
 
-    minet_bind(sockfd, &sin);
+    rc = minet_bind(sockfd, &sin);
+
+    printf("%i\n", rc);
      // != 0);
     //  {
     //   minet_close(sockfd);
