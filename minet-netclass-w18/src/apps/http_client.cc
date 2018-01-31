@@ -104,8 +104,8 @@ if (FD_ISSET(sockfd, &set)) {
 		clen = strstr(buf, "Content-Length:");
 		headers = strtok(clen, "\n");
 		headers = stoi(headers);
-		mes = buf.mid(strlen(buf) - headers);
-		print ("%s\n", mes);
+		mes = strlen(buf) - headers;;
+		printf ("%s\n", mes);
 	} else {
 		printf("%s\n", buf);
 	}
