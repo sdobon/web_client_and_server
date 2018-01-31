@@ -57,7 +57,7 @@ int main(int argc, char * argv[]) {
 	fprintf(stderr, "First argument must be k or u\n");
 	exit(-1);
     }
-    printf("%s\n", "init");
+    /*printf("%s\n", "init");*/
     /* create socket */
     sockfd = minet_socket(SOCK_STREAM);
     if (sockfd == -1)
@@ -65,7 +65,7 @@ int main(int argc, char * argv[]) {
 
     // rc = minet_bind(sockfd, &sin);
 
-    printf("%s\n", "created");
+    /*printf("%s\n", "created");*/
     // Do DNS lookup
     /* Hint: use gethostbyname() */
     site = gethostbyname(server_name);
