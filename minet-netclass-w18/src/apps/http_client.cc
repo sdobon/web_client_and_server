@@ -106,14 +106,14 @@ if (FD_ISSET(sockfd, &set)) {
 	minet_read(sockfd, buf, 1024);
 	ec = strtok(buf, " ");
 	ec = strtok(NULL, " ");
-	printf("%s\n", ec);
 	ecint = atoi(ec);
 	clen = strtok(NULL, "h");
 	clen = strtok(NULL, " ");
 	clen = strtok(NULL, "\n");
 	clenint = atoi(clen);
+	/*printf("%s\n", ec);
 	printf ("%s\n", clen);
-	printf ("%d\n", clenint);
+	printf ("%d\n", clenint);*/
 	if (ecint == 200) {
 		mes = buf + 245;
 		printf ("%s\n", mes);
