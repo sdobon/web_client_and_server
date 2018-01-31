@@ -75,6 +75,7 @@ exit(-1);
   FD_ZERO(&readlist);
 
   printf("%i\n", FD_ISSET(sockfd_listen, &connections));
+  printf("%i\n", connections[0]);
 
   /* connection handling loop */
   // while(1)
