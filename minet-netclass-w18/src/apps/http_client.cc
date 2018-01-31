@@ -57,13 +57,7 @@ int main(int argc, char * argv[]) {
       return sockfd;
 
     // rc = minet_bind(sockfd, &sin);
-    //
-    // printf("%i\n", rc);
-     // != 0);
-    //  {
-    //   minet_close(sockfd);
-    //   return -1;
-    // }
+
     printf("%s\n", "created");
     // Do DNS lookup
     /* Hint: use gethostbyname() */
