@@ -115,9 +115,8 @@ if (FD_ISSET(sockfd, &set)) {
 	printf ("%s\n", clen);
 	printf ("%d\n", clenint);
 	if (ecint == 200) {
-		headers = strtok(buf, "\0");
-		mes = headers[strlen(headers) - clenint];
-		printf ("%s\n", mes);
+		headers = buf[strlen(buf) - clenint];
+		printf ("%s\n", headers);
 	} else {
 		printf("%s\n", buf);
 	}
