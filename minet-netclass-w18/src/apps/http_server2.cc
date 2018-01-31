@@ -71,7 +71,8 @@ exit(-1);
 
   printf("%s\n", "now accepting connections...");
   printf("%i\n", FD_ISSET(sockfd_listen, &connections));
-  FD_SET(sockfd_listen, &connections);
+  minet_select(sockfd_listen + 5, &connections, NULL, NULL, NULL);
+  //FD_SET(sockfd_listen, &connections);
   FD_ZERO(&readlist);
 
   printf("%i\n", FD_ISSET(sockfd_listen, &connections));
