@@ -105,10 +105,8 @@ if (FD_ISSET(sockfd, &set)) {
 	minet_read(sockfd, buf, 1024);
 	ec = strtok(buf, " ");
 	ec = strtok(NULL, " ");
-	ecint = atoi(ec);
 	printf("%s\n", ec);
-	printf("%s\n", ecint);
-	/*if (ecint == 200) {
+	if (ec == "200") {
 		clen = strstr(buf, "Content-Length:");
 		printf ("%s\n", clen);
 		headers = strtok(clen, "\n");
@@ -118,7 +116,7 @@ if (FD_ISSET(sockfd, &set)) {
 		printf ("%s\n", meslen);
 	} else {
 		printf("%s\n", buf);
-	}*/
+	}
 };
     /* examine return code */
     //Skip "HTTP/1.0"
