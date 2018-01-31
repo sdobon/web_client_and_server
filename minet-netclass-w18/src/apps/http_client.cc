@@ -25,11 +25,10 @@ int main(int argc, char * argv[]) {
     char * bptr = NULL;
     char * bptr2 = NULL;
     char * endheaders = NULL;
-    char ec[BUFSIZE + 1];
-    char clen[BUFSIZE + 1];
-    char headers[BUFSIZE + 1];
-    char mes[BUFSIZE + 1];
-    char headers[BUFSIZE + 1];
+    char * ec = NULL;
+    char * clen = NULL;
+    char * headers = NULL;
+    char * mes = NULL; 
 	
     struct timeval timeout;
     fd_set set;
