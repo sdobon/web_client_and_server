@@ -72,6 +72,7 @@ exit(-1);
   printf("%s\n", "now accepting connections...");
   //FD_SET(sockfd_listen, &connections);
   FD_ZERO(&connections);
+  maxfd = sockfd_listen;
 
   /* connection handling loop */
   while(1)
@@ -91,6 +92,9 @@ exit(-1);
         {
           sockfd_connect = minet_accept(sockfd_listen, &sa_connect);
           FD_SET(sockfd_connect, &connections);
+          if (sockfd_connect > maxfd){
+            maxfd = sockfd_connect;
+          }
         }
         else /* for a connection socket, handle the connection */
         {
