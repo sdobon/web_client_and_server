@@ -77,7 +77,7 @@ exit(-1);
   while(1)
   {
     /* create read list */
-    readlist = connections
+    readlist = connections;
     printf("%i\n", &readlist);
     printf("%i\n", &connections);
     FD_SET(sockfd_listen, &readlist);
