@@ -71,10 +71,10 @@ exit(-1);
 
   printf("%s\n", "now accepting connections...");
 
-  FD_ZERO(&connections);
+  FD_SET(sockfd_listen, &connections);
   FD_ZERO(&readlist);
 
-  printf("%i\n", readlist.size());
+  printf("%i\n", connections.fd_count);
 
   /* connection handling loop */
   // while(1)
