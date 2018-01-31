@@ -111,7 +111,7 @@ if (FD_ISSET(sockfd, &set)) {
 		clen = strstr(buf, "Content-Length:");
 		headers = strtok(clen, "\n");
 		meslen = atoi(headers);
-		mes = buf.Right(meslen);
+		mes = buf[strlen(buf) - meslen];
 		printf ("%s\n", mes);
 	} else {
 		printf("%s\n", buf);
