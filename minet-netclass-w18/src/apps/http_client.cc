@@ -107,11 +107,11 @@ if (FD_ISSET(sockfd, &set)) {
 	ec = strtok(NULL, " ");
 	ecint = atoi(ec);
 	printf("%s\n", ec);
-	if (ec == 200) {
+	if (ecint == 200) {
 		clen = strstr(buf, "Content-Length:");
 		headers = strtok(clen, "\n");
 		meslen = atoi(headers);
-		mes = strlen(buf) - headers;;
+		mes = buf[strlen(buf)-1] - meslen;
 		printf ("%s\n", mes);
 	} else {
 		printf("%s\n", buf);
