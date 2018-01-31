@@ -75,25 +75,25 @@ exit(-1);
   FD_ZERO(&readlist);
 
   /* connection handling loop */
-  while(1)
-  {
-    /* create read list */
-
-    /* do a select */
-    minet_select(maxfd, &readlist, NULL, NULL);
-    /* process sockets that are ready */
-    for(int i; i < readlist.fd_count; i++){
-      /* for the accept socket, add accepted connection to connections */
-      if (i == sockfd_listen)
-      {
-        sockfd_connect = minet_accept(sockfd_listen, &sa_connect);
-      }
-      else /* for a connection socket, handle the connection */
-      {
-	       rc = handle_connection(i);
-      }
-    }
-  }
+  // while(1)
+  // {
+  //   /* create read list */
+  //
+  //   /* do a select */
+  //   minet_select(maxfd, &readlist, NULL, NULL);
+  //   /* process sockets that are ready */
+  //   for(int i; i < readlist.fd_count; i++){
+  //     /* for the accept socket, add accepted connection to connections */
+  //     if (i == sockfd_listen)
+  //     {
+  //       sockfd_connect = minet_accept(sockfd_listen, &sa_connect);
+  //     }
+  //     else /* for a connection socket, handle the connection */
+  //     {
+	//        rc = handle_connection(i);
+  //     }
+  //   }
+  // }
 }
 
 int handle_connection(int sockfd_connect)
