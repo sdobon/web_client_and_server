@@ -25,7 +25,12 @@ int main(int argc, char * argv[]) {
     char * bptr = NULL;
     char * bptr2 = NULL;
     char * endheaders = NULL;
-
+    char ec[BUFSIZE + 1];
+    char clen[BUFSIZE + 1];
+    char headers[BUFSIZE + 1];
+    char mes[BUFSIZE + 1];
+    char headers[BUFSIZE + 1];
+	
     struct timeval timeout;
     fd_set set;
 
@@ -103,7 +108,7 @@ if (FD_ISSET(sockfd, &set)) {
 	if (ec == 200) {
 		clen = strstr(buf, "Content-Length:");
 		headers = strtok(clen, "\n");
-		headers = stoi(headers);
+		headers = atoi(headers);
 		mes = strlen(buf) - headers;;
 		printf ("%s\n", mes);
 	} else {
