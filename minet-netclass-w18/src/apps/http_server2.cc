@@ -83,7 +83,8 @@ exit(-1);
     printf("%i\n", &connections);
     FD_SET(sockfd_listen, &readlist);
     /* do a select */
-    minet_select(maxfd + 1, &readlist, NULL, NULL, NULL);
+    rc = minet_select(maxfd + 1, &readlist, NULL, NULL, NULL);
+    printf("%i\n", rc);
     /* process sockets that are ready */
     for(int i; i < maxfd + 1; i++){
       if(FD_ISSET(i, &readlist)){
