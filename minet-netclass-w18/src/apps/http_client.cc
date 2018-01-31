@@ -55,10 +55,12 @@ int main(int argc, char * argv[]) {
     sockfd = minet_socket(SOCK_STREAM);
     if (sockfd == -1)
       return sockfd;
+
     if (minet_bind(sockfd, &sin) != 0) {
       minet_close(sockfd);
       return -1;
     }
+    printf("%s\n", "created");
     // Do DNS lookup
     /* Hint: use gethostbyname() */
     site = gethostbyname(server_name);
