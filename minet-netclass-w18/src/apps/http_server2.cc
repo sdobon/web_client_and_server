@@ -74,7 +74,7 @@ exit(-1);
   FD_ZERO(&connections);
   FD_ZERO(&readlist);
 
-  printf("%i\n", readlist.fd_array.size());
+  printf("%i\n", readlist.size());
 
   /* connection handling loop */
   // while(1)
