@@ -50,7 +50,7 @@ int main(int argc, char * argv[]) {
 	fprintf(stderr, "First argument must be k or u\n");
 	exit(-1);
     }
-
+    printf("%s\n", "init");
     /* create socket */
     sockfd = minet_socket(SOCK_STREAM);
     if (sockfd == -1)
