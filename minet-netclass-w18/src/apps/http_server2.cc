@@ -71,13 +71,16 @@ exit(-1);
 
   printf("%s\n", "now accepting connections...");
 
+  FD_ZERO(&connections);
+  FD_ZERO(&readlist);
+
   /* connection handling loop */
   while(1)
   {
     /* create read list */
 
     /* do a select */
-    minet_select(maxfd, readlist, NULL, NULL);
+    minet_select(maxfd, &readlist, NULL, NULL);
     /* process sockets that are ready */
     for(int i; i < readlist.fd_count; i++){
       /* for the accept socket, add accepted connection to connections */
