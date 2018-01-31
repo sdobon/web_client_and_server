@@ -84,9 +84,6 @@ exit(-1);
     FD_SET(sockfd_listen, &readlist);
     /* do a select */
     rc = minet_select(maxfd + 1, &readlist, NULL, NULL, NULL);
-    printf("%i\n", rc);
-    printf("%i\n", maxfd);
-    printf("%s\n", "-----------------");
     /* process sockets that are ready */
     for(int i = 0; i < maxfd + 1; i++){
       if(FD_ISSET(i, &readlist)){
@@ -134,8 +131,6 @@ int handle_connection(int sockfd_connect)
                          "</body></html>\n";
   bool ok=true;
   char baseurl[120] = "./src/apps";
-
-  printf("%s\n", "finish init");
 
   memset(&buf, 0, sizeof(buf));
 
