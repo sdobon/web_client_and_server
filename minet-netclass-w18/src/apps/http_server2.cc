@@ -88,7 +88,7 @@ exit(-1);
     printf("%i\n", maxfd);
     printf("%s\n", "-----------------");
     /* process sockets that are ready */
-    for(int i; i < maxfd + 1; i++){
+    for(int i = 0; i < maxfd + 1; i++){
       if(FD_ISSET(i, &readlist)){
         /* for the accept socket, add accepted connection to connections */
         if (i == sockfd_listen)
