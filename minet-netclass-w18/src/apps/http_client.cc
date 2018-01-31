@@ -31,6 +31,7 @@ int main(int argc, char * argv[]) {
     char * mes = NULL; 
     int meslen = 0;
     int ecint = 0;
+    int clenint = 0;
 	
     struct timeval timeout;
     fd_set set;
@@ -109,7 +110,9 @@ if (FD_ISSET(sockfd, &set)) {
 	clen = strtok(NULL, "h");
 	clen = strtok(NULL, " ");
 	clen = strtok(NULL, "\n");
+	clenint = atoi(clen);
 	printf ("%s\n", clen);
+	printf ("%d\n", clenint);
 	if (ec == "200") {
 		/*clen = strstr(buf, "Content-Length:");
 		headers = strtok(clen, "\n");
