@@ -70,34 +70,36 @@ exit(-1);
   };
 
   printf("%s\n", "now accepting connections...");
-  printf("%i\n", FD_ISSET(sockfd_listen, &connections));
-  minet_select(sockfd_listen + 5, &connections, NULL, NULL, NULL);
   //FD_SET(sockfd_listen, &connections);
-  FD_ZERO(&readlist);
-
-  printf("%i\n", FD_ISSET(sockfd_listen, &connections));
-  printf("%i\n", connections);
+  FD_ZERO(&connections);
 
   /* connection handling loop */
-  // while(1)
-  // {
-  //   /* create read list */
-  //
-  //   /* do a select */
-  //   minet_select(maxfd, &readlist, NULL, NULL);
-  //   /* process sockets that are ready */
-  //   for(int i; i < readlist.fd_count; i++){
-  //     /* for the accept socket, add accepted connection to connections */
-  //     if (i == sockfd_listen)
-  //     {
-  //       sockfd_connect = minet_accept(sockfd_listen, &sa_connect);
-  //     }
-  //     else /* for a connection socket, handle the connection */
-  //     {
-	//        rc = handle_connection(i);
-  //     }
-  //   }
-  // }
+  while(1)
+  {
+    /* create read list */
+    readlist = connections
+    printf("%i\n", &readlist);
+    printf("%i\n", &connections);
+    FD_SET(sockfd_listen, &readlist);
+    /* do a select */
+    minet_select(maxfd + 1, &readlist, NULL, NULL, NULL);
+    /* process sockets that are ready */
+    for(int i; i < maxfd + 1; i++){
+      if(FD_ISSET(i, &readlist)){
+        /* for the accept socket, add accepted connection to connections */
+        if (i == sockfd_listen)
+        {
+          sockfd_connect = minet_accept(sockfd_listen, &sa_connect);
+          FD_SET(sockfd_connect, &connections);
+        }
+        else /* for a connection socket, handle the connection */
+        {
+  	       rc = handle_connection(i);
+           FD_CLR(i, &connections);
+        }
+      }
+    }
+  }
 }
 
 int handle_connection(int sockfd_connect)
