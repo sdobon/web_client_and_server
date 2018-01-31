@@ -90,12 +90,6 @@ int main(int argc, char * argv[]) {
     minet_select(sockfd+1, &set, NULL, NULL, NULL);
 
     /* first read loop -- read headers */
-    if (FD_ISSET (sockfd, &set)) {
-	    minet_read(sockfd, buf, 1024);
-	    clen = strstr(buf, "Content-Length:");
-	    headers = strtok(clen, "\n");
-	    
-	    
 	    
 	/* if (FD_ISSET(sockfd, &set)) {
       		minet_read(sockfd, buf, 1024);
@@ -105,6 +99,7 @@ if (FD_ISSET(sockfd, &set)) {
 	minet_read(sockfd, buf, 1024);
 	ec = strtok(buf, " ");
 	ec = strtok(NULL, " ");
+	printf("%s\n", ec);
 	if (ec == 200) {
 		clen = strstr(buf, "Content-Length:");
 		headers = strtok(clen, "\n");
