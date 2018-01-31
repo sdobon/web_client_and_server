@@ -150,7 +150,7 @@ int handle_connection(int sockfd_connect)
     read(fd, fileresp, filestat.st_size);
     // printf("%s\n", fileresp);
     writenbytes(sockfd_connect, fileresp, filestat.st_size);
-    // free(fileresp);
+    free(fileresp);
     close(fd);
   }
   else // send error response
