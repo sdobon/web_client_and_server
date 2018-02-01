@@ -71,11 +71,15 @@ exit(-1);
   while(1)
   {
     /* handle connections */
-    sockfd_connect = minet_accept(sockfd_listen, &sa_connect);
-    rc = handle_connection(sockfd_connect);
-    if (rc == -1){
-      printf("%s\n", "connection failed");
-    };
+    FD_SET(sockfd_listen, &set);
+    minet_select(sockfd_listen + 1, &set, NULL, NULL, NULL);
+    if (FD_ISSET(sockfd_listen, &set)){
+      sockfd_connect = minet_accept(sockfd_listen, &sa_connect);
+      rc = handle_connection(sockfd_connect);
+      if (rc == -1){
+        printf("%s\n", "connection failed");
+      }
+    }
   }
 }
 
@@ -103,6 +107,7 @@ int handle_connection(int sockfd_connect)
                          "<h2>404 FILE NOT FOUND</h2>\n"
                          "</body></html>\n";
   bool ok=true;
+  fd_set set;
   char baseurl[120] = "./src/apps";
 
   printf("%s\n", "finish init");
