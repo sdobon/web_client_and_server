@@ -110,11 +110,13 @@ if (FD_ISSET(sockfd, &set)) {
 	ec = strtok(NULL, " ");
 	ecint = atoi(ec);
   printf ("%i\n", ecint);
-	clen = strtok(NULL, "h");
-	clen = strtok(NULL, " ");
-	clen = strtok(NULL, "\n");
-	clenint = atoi(clen);
-  mes = strstr(buf, "Content-Length");
+	// clen = strtok(NULL, "h");
+	// clen = strtok(NULL, " ");
+	// clen = strtok(NULL, "\n");
+	// clenint = atoi(clen);
+  clen = strstr(buf, "Content-Length: ");
+  clen = *(&clen + (int) strlen("Content-Length: "));
+  printf ("%s\n", clen);
 	/*printf("%s\n", ec);
 	printf ("%s\n", clen);
 	printf ("%d\n", clenint);*/
