@@ -120,6 +120,7 @@ int handle_connection(int sockfd_connect)
   minet_set_nonblocking(sockfd_connect);
 
   if ((rc = minet_read(sockfd_connect,buf,BUFSIZE)) == -1){
+    minet_close(sockfd_connect);
     return rc;
   }
   buf[rc] = '\0';
