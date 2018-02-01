@@ -86,8 +86,8 @@ int main(int argc, char * argv[]) {
     }
     req = (char *) malloc((int) strlen("GET / HTTP/1.0\r\n\r\n") + (int) strlen(server_path));
 
-    sprintf(req, "GET /%s HTTP/1.0\r\n\r\n", server_path);
-    printf("%s\n", req);
+    //(req, "GET /%s HTTP/1.0\r\n\r\n", server_path);
+    //printf("%s\n", req);
     /* send request */
     write_n_bytes(sockfd, req, (int) strlen(req));
     /* wait till socket can be read */
@@ -102,38 +102,38 @@ int main(int argc, char * argv[]) {
       		minet_read(sockfd, buf, 1024);
       		printf("%s\n", buf);
    	 };*/
-if (FD_ISSET(sockfd, &set)) {
-  memset(&buf, 0, sizeof(buf));
-	rc = minet_read(sockfd, buf, 1024);
-  printf("%s\n", buf);
+  if (FD_ISSET(sockfd, &set)) {
+    memset(&buf, 0, sizeof(buf));
+  	rc = minet_read(sockfd, buf, 1024);
+    printf("%s\n", buf);
 
-  clen = strstr(buf, "Content-Length:");
-  clen = strtok(clen, " ");
-  clen = strtok(NULL, "\n");
-  clenint = atoi(clen);
-  printf ("%s\n", clen);
+    clen = strstr(buf, "Content-Length:");
+    clen = strtok(clen, " ");
+    clen = strtok(NULL, "\n");
+    clenint = atoi(clen);
+    printf ("%s\n", clen);
 
-	ec = strtok(buf, " ");
-	ec = strtok(NULL, " ");
-	ecint = atoi(ec);
-  printf ("%i\n", ecint);
-	// clen = strtok(NULL, "h");
-	// clen = strtok(NULL, " ");
-	// clen = strtok(NULL, "\n");
-	// clenint = atoi(clen);
+  	ec = strtok(buf, " ");
+  	ec = strtok(NULL, " ");
+  	ecint = atoi(ec);
+    printf ("%i\n", ecint);
+  	// clen = strtok(NULL, "h");
+  	// clen = strtok(NULL, " ");
+  	// clen = strtok(NULL, "\n");
+  	// clenint = atoi(clen);
 
-  //clen = *(&clen + strlen("Content-Length: "));
-  //printf ("%s\n", *clen);
-	/*printf("%s\n", ec);
-	printf ("%s\n", clen);
-	printf ("%d\n", clenint);*/
-	if (ecint == 200) {
-		mes = buf + rc - clenint;
-		printf ("%s\n", mes);
-	} else {
-		printf("%s\n", buf);
-	}
-};
+    //clen = *(&clen + strlen("Content-Length: "));
+    //printf ("%s\n", *clen);
+  	/*printf("%s\n", ec);
+  	printf ("%s\n", clen);
+  	printf ("%d\n", clenint);*/
+  	if (ecint == 200) {
+  		mes = buf + rc - clenint;
+  		printf ("%s\n", mes);
+  	} else {
+  		printf("%s\n", buf);
+  	}
+  };
     /* examine return code */
     //Skip "HTTP/1.0"
     //remove the '\0'
