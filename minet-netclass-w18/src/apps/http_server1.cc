@@ -19,6 +19,8 @@ int main(int argc,char *argv[])
   struct sockaddr_in sa_listen,sa_connect;
   int rc;
 
+  fd_set set;
+
   /* parse command line args */
   if (argc != 3)
   {
@@ -107,7 +109,6 @@ int handle_connection(int sockfd_connect)
                          "<h2>404 FILE NOT FOUND</h2>\n"
                          "</body></html>\n";
   bool ok=true;
-  fd_set set;
   char baseurl[120] = "./src/apps";
 
   printf("%s\n", "finish init");
