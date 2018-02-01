@@ -108,6 +108,7 @@ if (FD_ISSET(sockfd, &set)) {
 	ec = strtok(buf, " ");
 	ec = strtok(NULL, " ");
 	ecint = atoi(ec);
+  printf ("%i\n", ec);
 	clen = strtok(NULL, "h");
 	clen = strtok(NULL, " ");
 	clen = strtok(NULL, "\n");
