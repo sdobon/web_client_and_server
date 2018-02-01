@@ -119,7 +119,9 @@ int handle_connection(int sockfd_connect)
 
   minet_set_nonblocking(sockfd_connect);
 
-  rc = minet_read(sockfd_connect,buf,BUFSIZE);
+  if ((rc = minet_read(sockfd_connect,buf,BUFSIZE)) == -1){
+    return rc;
+  }
   buf[rc] = '\0';
   printf("%s\n", buf);
   printf("%i\n", rc);
