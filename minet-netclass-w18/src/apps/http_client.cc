@@ -128,7 +128,7 @@ if (FD_ISSET(sockfd, &set)) {
 	printf ("%s\n", clen);
 	printf ("%d\n", clenint);*/
 	if (ecint == 200) {
-		mes = *(&buf + rc - clenint);
+		mes = buf + rc - clenint;
 		printf ("%s\n", mes);
 	} else {
 		printf("%s\n", buf);
