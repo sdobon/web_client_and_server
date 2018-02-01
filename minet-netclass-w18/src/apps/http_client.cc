@@ -104,12 +104,13 @@ int main(int argc, char * argv[]) {
    	 };*/
 if (FD_ISSET(sockfd, &set)) {
   memset(&buf, 0, sizeof(buf));
-	minet_read(sockfd, buf, 1024);
+	rc = minet_read(sockfd, buf, 1024);
   printf("%s\n", buf);
-  
+
   clen = strstr(buf, "Content-Length:");
   clen = strtok(clen, " ");
   clen = strtok(NULL, "\n");
+  clenint = atoi(clen);
   printf ("%s\n", clen);
 
 	ec = strtok(buf, " ");
@@ -127,7 +128,7 @@ if (FD_ISSET(sockfd, &set)) {
 	printf ("%s\n", clen);
 	printf ("%d\n", clenint);*/
 	if (ecint == 200) {
-		mes = buf + 245;
+		mes = *(&buf + rc - clenint);
 		printf ("%s\n", mes);
 	} else {
 		printf("%s\n", buf);
