@@ -106,6 +106,12 @@ if (FD_ISSET(sockfd, &set)) {
   memset(&buf, 0, sizeof(buf));
 	minet_read(sockfd, buf, 1024);
   printf("%s\n", buf);
+  
+  clen = strstr(buf, "Content-Length:");
+  clen = strtok(clen, " ");
+  clen = strtok(NULL, "\n");
+  printf ("%s\n", clen);
+
 	ec = strtok(buf, " ");
 	ec = strtok(NULL, " ");
 	ecint = atoi(ec);
@@ -114,10 +120,7 @@ if (FD_ISSET(sockfd, &set)) {
 	// clen = strtok(NULL, " ");
 	// clen = strtok(NULL, "\n");
 	// clenint = atoi(clen);
-  clen = strstr(buf, "asdfdsdf");
-  clen = strtok(clen, " ");
-  clen = strtok(NULL, "\n");
-  printf ("%s\n", clen);
+
   //clen = *(&clen + strlen("Content-Length: "));
   //printf ("%s\n", *clen);
 	/*printf("%s\n", ec);
