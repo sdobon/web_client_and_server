@@ -28,11 +28,11 @@ int main(int argc, char * argv[]) {
     char * ec = NULL;
     char * clen = NULL;
     char headers[BUFSIZE + 1];
-    char * mes = NULL; 
+    char * mes = NULL;
     int meslen = 0;
     int ecint = 0;
     int clenint = 0;
-	
+
     struct timeval timeout;
     fd_set set;
 
@@ -97,13 +97,14 @@ int main(int argc, char * argv[]) {
     minet_select(sockfd+1, &set, NULL, NULL, NULL);
 
     /* first read loop -- read headers */
-	    
+
 	/* if (FD_ISSET(sockfd, &set)) {
       		minet_read(sockfd, buf, 1024);
       		printf("%s\n", buf);
    	 };*/
 if (FD_ISSET(sockfd, &set)) {
 	minet_read(sockfd, buf, 1024);
+  printf("%s\n", buf);
 	ec = strtok(buf, " ");
 	ec = strtok(NULL, " ");
 	ecint = atoi(ec);
