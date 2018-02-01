@@ -103,6 +103,7 @@ int main(int argc, char * argv[]) {
       		printf("%s\n", buf);
    	 };*/
 if (FD_ISSET(sockfd, &set)) {
+  memset(&buf, 0, sizeof(buf));
 	minet_read(sockfd, buf, 1024);
   printf("%s\n", buf);
 	ec = strtok(buf, " ");
