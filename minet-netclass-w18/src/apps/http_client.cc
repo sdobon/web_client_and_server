@@ -116,7 +116,7 @@ if (FD_ISSET(sockfd, &set)) {
 	// clenint = atoi(clen);
   clen = strstr(buf, "Content-Length: ");
   //clen = *(&clen + strlen("Content-Length: "));
-  printf ("%s\n", *clen);
+  //printf ("%s\n", *clen);
 	/*printf("%s\n", ec);
 	printf ("%s\n", clen);
 	printf ("%d\n", clenint);*/
